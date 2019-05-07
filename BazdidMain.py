@@ -12,7 +12,7 @@ from about import Ui_Form
 import icon_rc
 
 
-class Baygan():
+class Bazdid():
     def __init__(self):
         app = QApplication(sys.argv)
         self.MainWindow = QMainWindow()
@@ -148,9 +148,9 @@ class Baygan():
         self.sangFari_1 = self.ui.lineEdit_sangFari.text()
         self.PL = str(self.sangAsli_1)+"/"+str(self.sangFari_1)
         self.moteqazi = self.ui.lineEdit_moteqazi.text()
-        self.bazdid_day = self.ui.lineEdit_dateDay_2.text()
-        self.bazdid_month = self.ui.lineEdit_dateMonth_2.text()
-        self.bazdid_year = self.ui.lineEdit_dateYear_2.text()
+        self.bazdid_day = str(int(self.ui.lineEdit_dateDay_2.text()))
+        self.bazdid_month = str(int(self.ui.lineEdit_dateMonth_2.text()))
+        self.bazdid_year = str(int(self.ui.lineEdit_dateYear_2.text()))
         self.bazdid_date = self.bazdid_year + "/" + self.bazdid_month + "/" + self.bazdid_day
         self.bazdid_Saat = self.ui.lineEdit_hour.text()
         self.naghsheBardar = self.ui.comboBox_naghshebardar.currentText()
@@ -247,9 +247,9 @@ class Baygan():
         self.searcherVariable()
         pl = self.sangAsli_2 + "/" + self.sangFari_2
         if self.ui.checkBox_viaDate.isChecked():
-            day = self.ui.lineEdit_dateDay.text()
-            month = self.ui.lineEdit_dateMonth.text()
-            year = self.ui.lineEdit_dateYear.text()
+            day = str(int(self.ui.lineEdit_dateDay.text()))
+            month = str(int(self.ui.lineEdit_dateMonth.text()))
+            year = str(int(self.ui.lineEdit_dateYear.text()))
             searchDate = year+"/"+month+"/"+day
             searchDate2 = year.replace('13', '')+"/"+month+"/"+day
             self.dbToTableView(
@@ -397,4 +397,4 @@ class Baygan():
 
 
 if __name__ == '__main__':
-    run = Baygan()
+    run = Bazdid()
