@@ -307,6 +307,7 @@ class Bazdid():
             for i, row in enumerate(mysel):
                 for j, value in enumerate(row):
                     worksheet.write(i + 1, j, value)
+
 ## QtableView table Sql print to printer
     def handlePrint(self):
         dialog = QPrintDialog()
