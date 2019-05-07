@@ -1560,7 +1560,7 @@ border-radius: 3px;
                   <item>
                    <widget class="QCheckBox" name="checkBox_viaDate">
                     <property name="toolTip">
-                     <string>بازیابی سوابق پرونده به تاریخ</string>
+                     <string>بازیابی سوابق ثبت شده به تاریخ</string>
                     </property>
                     <property name="statusTip">
                      <string/>
@@ -1844,9 +1844,9 @@ border-radius: 3px;
                 <item>
                  <layout class="QHBoxLayout" name="horizontalLayout_5">
                   <item>
-                   <widget class="QCheckBox" name="checkBox_viaDate_2">
+                   <widget class="QCheckBox" name="checkBox_viaName">
                     <property name="toolTip">
-                     <string>بازیابی سوابق پرونده به تاریخ</string>
+                     <string>بازیابی سوابق ثبت شده به نام متقاضی</string>
                     </property>
                     <property name="statusTip">
                      <string/>
@@ -2214,7 +2214,7 @@ border-radius: 10px;
   <tabstop>lineEdit_dateDay</tabstop>
   <tabstop>lineEdit_dateMonth</tabstop>
   <tabstop>lineEdit_dateYear</tabstop>
-  <tabstop>checkBox_viaDate_2</tabstop>
+  <tabstop>checkBox_viaName</tabstop>
   <tabstop>lineEdit_moteqazi_2</tabstop>
   <tabstop>pushButton_search</tabstop>
   <tabstop>pushButton_print</tabstop>
