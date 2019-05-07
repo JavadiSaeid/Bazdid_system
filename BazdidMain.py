@@ -10,6 +10,7 @@ from PyQt5.QtWidgets import QApplication, QMainWindow, QMessageBox, QDesktopWidg
 from interface_bazdid import Ui_MainWindow
 from about import Ui_Form
 import icon_rc
+from xlsxwriter.workbook import Workbook
 
 
 class Bazdid():
@@ -291,6 +292,21 @@ class Bazdid():
     def enPrint(self):
         self.ui.pushButton_print.setEnabled(True)
 
+    def dbTOxlsx(self):
+        Tr = self.TimeSabt.strftime("%Y%m%d%H%M")
+        workbook = Workbook('BackupBazdid_{}.xlsx'.format(Tr))
+        worksheet = workbook.add_worksheet()
+        with sqlite3.connect(self.dbPath) as conn:
+            c = conn.cursor()
+            c.execute("select id, pl, ml, dw, tb, sb, nb, nm, sd, tt from BAZDID_DATE")
+            mysel = c.execute("select id, pl, ml, dw, tb, sb, nb, nm, sd, tt from BAZDID_DATE ")
+            headers = ['ردیف', 'پلاک', 'متقاضی', 'نوع انجام کار', 'تاریخ بازدید', 'ساعت بازدید', 'نقشه بردار',
+                       'نماینده', 'تاریخ ثبت', 'توضیحات']
+            for i, title in enumerate(headers):
+                worksheet.write(0, i, title)
+            for i, row in enumerate(mysel):
+                for j, value in enumerate(row):
+                    worksheet.write(i + 1, j, value)
 ## QtableView table Sql print to printer
     def handlePrint(self):
         dialog = QPrintDialog()
