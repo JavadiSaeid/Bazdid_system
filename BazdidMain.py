@@ -297,10 +297,10 @@ class Bazdid():
 
     def dbTOxlsx(self):
         try:
-            if not os.path.isdir('./backupBazdid'):
-                os.mkdir('backupBazdid')
+            if not os.path.isdir('./Backup'):
+                os.mkdir('Backup')
             Tr = self.TimeSabt.strftime("%Y%m%d%H%M")
-            workbook = Workbook('backupBazdid/BackupBazdid_{}.xlsx'.format(Tr))
+            workbook = Workbook('Backup/BackupBazdid_{}.xlsx'.format(Tr))
             worksheet = workbook.add_worksheet()
             with sqlite3.connect(self.dbPath) as conn:
                 c = conn.cursor()
