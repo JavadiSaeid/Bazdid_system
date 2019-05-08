@@ -1323,7 +1323,7 @@ border-radius: 10px;
         <cursorShape>ArrowCursor</cursorShape>
        </property>
        <property name="statusTip">
-        <string> بازیابی پرونده های زمانبندی بازدید شده</string>
+        <string> بازیابی پلاک های تعیین وقت شده</string>
        </property>
        <property name="styleSheet">
         <string notr="true">QWidget{

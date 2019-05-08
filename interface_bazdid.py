@@ -932,7 +932,7 @@ class Ui_MainWindow(object):
         self.pushButton_new.setText(_translate("MainWindow", "   جدید   "))
         self.pushButton_new.setShortcut(_translate("MainWindow", "Ctrl+N"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab1_inputData), _translate("MainWindow", "ورود اطلاعات"))
-        self.tab2_SearchData.setStatusTip(_translate("MainWindow", " بازیابی پرونده های زمانبندی بازدید شده"))
+        self.tab2_SearchData.setStatusTip(_translate("MainWindow", " بازیابی پلاک های تعیین وقت شده"))
         self.groupBox.setTitle(_translate("MainWindow", "فرم بازیابی اطلاعات ثبت شده"))
         self.lineEdit_sangFari_2.setToolTip(_translate("MainWindow", "<html><head/><body><p>سنگ <span style=\" font-weight:600; color:#724c00;\">فرعی</span> را وارد کنید</p></body></html>"))
         self.lineEdit_sangFari_2.setPlaceholderText(_translate("MainWindow", "سنگ فرعی"))
