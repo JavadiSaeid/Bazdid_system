@@ -872,7 +872,7 @@ class Ui_MainWindow(object):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "تعیین وقت بازدید ثبت ماسال"))
         self.tab1_inputData.setStatusTip(_translate("MainWindow", "ثبت زمانبندی بازدید  پروندها"))
-        self.groupBox_inputData.setTitle(_translate("MainWindow", "فرم ثبت زمانبندی بازدید"))
+        self.groupBox_inputData.setTitle(_translate("MainWindow", "فرم ثبت تعیین وقت بازدید"))
         self.lineEdit_sangFari.setToolTip(_translate("MainWindow", "<html><head/><body><p>سنگ <span style=\" font-weight:600; color:#724c00;\">فرعی</span> را وارد کنید</p></body></html>"))
         self.lineEdit_sangFari.setPlaceholderText(_translate("MainWindow", "سنگ فرعی"))
         self.label.setText(_translate("MainWindow", "/"))

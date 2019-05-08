@@ -22,8 +22,8 @@ class Bazdid():
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self.MainWindow)
         self.dateTime()
-        # self.dbPath = r'\\10.120.112.70\baygan-data\ZamanBandi_Bazdid.db'
-        self.dbPath = r'Data\ZamanBandi_Bazdid.db'
+        self.dbPath = r'\\10.120.112.70\baygan-data\ZamanBandi_Bazdid.db'
+        # self.dbPath = r'Data\ZamanBandi_Bazdid.db'
         self.onlyInt = QIntValidator()
         # regex=QRegExp("^\*$|[0-9]+")
         regex = QRegExp("[0-9]+")
@@ -417,7 +417,6 @@ class Bazdid():
                           "}")
         box.setWindowFlags(box.windowFlags() | Qt.FramelessWindowHint | Qt.WindowStaysOnTopHint)
         box.exec_()
-
 
 
 

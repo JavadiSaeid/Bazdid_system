@@ -120,7 +120,7 @@ border-radius:2px;
         <item row="0" column="1">
          <widget class="QGroupBox" name="groupBox_inputData">
           <property name="title">
-           <string>فرم ثبت زمانبندی بازدید</string>
+           <string>فرم ثبت تعیین وقت بازدید</string>
           </property>
           <layout class="QGridLayout" name="gridLayout_2">
            <item row="0" column="0">
