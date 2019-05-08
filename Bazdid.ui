@@ -2165,6 +2165,7 @@ border-radius: 10px;
     </property>
     <addaction name="action_help"/>
     <addaction name="action_ChangPassword"/>
+    <addaction name="action_backup"/>
     <addaction name="separator"/>
     <addaction name="action_about"/>
     <addaction name="separator"/>
@@ -2191,6 +2192,14 @@ border-radius: 10px;
   <action name="action_ChangPassword">
    <property name="text">
     <string>تغییر رمز ورود</string>
+   </property>
+  </action>
+  <action name="action_backup">
+   <property name="text">
+    <string>پشتیبان گیری </string>
+   </property>
+   <property name="toolTip">
+    <string>پشتیبان گیری از دیتابیس</string>
    </property>
   </action>
  </widget>
