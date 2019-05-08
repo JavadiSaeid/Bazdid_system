@@ -1,3 +1,5 @@
+import os
+
 import dpi, sys, sqlite3, getpass
 from PyQt5.QtCore import QRegExp, Qt, QSizeF
 from PyQt5.QtPrintSupport import QPrintDialog, QPrintPreviewDialog
@@ -10,17 +12,18 @@ from PyQt5.QtWidgets import QApplication, QMainWindow, QMessageBox, QDesktopWidg
 from interface_bazdid import Ui_MainWindow
 from about import Ui_Form
 import icon_rc
+from xlsxwriter.workbook import Workbook
 
 
-class Baygan():
+class Bazdid():
     def __init__(self):
         app = QApplication(sys.argv)
         self.MainWindow = QMainWindow()
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self.MainWindow)
         self.dateTime()
-        # self.dbPath = r'\\10.120.112.70\baygan-data\98.db'
-        self.dbPath = r'Data\98.db'
+        # self.dbPath = r'\\10.120.112.70\baygan-data\ZamanBandi_Bazdid.db'
+        self.dbPath = r'Data\ZamanBandi_Bazdid.db'
         self.onlyInt = QIntValidator()
         # regex=QRegExp("^\*$|[0-9]+")
         regex = QRegExp("[0-9]+")
@@ -59,6 +62,7 @@ class Baygan():
 
 
         self.ui.action_about.triggered.connect(self.RunAbout)
+        self.ui.action_backup.triggered.connect(self.dbTOxlsx)
         self.ui.pushButton_print.clicked.connect(self.handlePreview)
         self.MainWindow.setWindowFlags(Qt.WindowStaysOnTopHint)
         self.ui.action_help.setEnabled(False)
@@ -148,9 +152,9 @@ class Baygan():
         self.sangFari_1 = self.ui.lineEdit_sangFari.text()
         self.PL = str(self.sangAsli_1)+"/"+str(self.sangFari_1)
         self.moteqazi = self.ui.lineEdit_moteqazi.text()
-        self.bazdid_day = self.ui.lineEdit_dateDay_2.text()
-        self.bazdid_month = self.ui.lineEdit_dateMonth_2.text()
-        self.bazdid_year = self.ui.lineEdit_dateYear_2.text()
+        self.bazdid_day = str(int(self.ui.lineEdit_dateDay_2.text()))
+        self.bazdid_month = str(int(self.ui.lineEdit_dateMonth_2.text()))
+        self.bazdid_year = str(int(self.ui.lineEdit_dateYear_2.text()))
         self.bazdid_date = self.bazdid_year + "/" + self.bazdid_month + "/" + self.bazdid_day
         self.bazdid_Saat = self.ui.lineEdit_hour.text()
         self.naghsheBardar = self.ui.comboBox_naghshebardar.currentText()
@@ -247,9 +251,9 @@ class Baygan():
         self.searcherVariable()
         pl = self.sangAsli_2 + "/" + self.sangFari_2
         if self.ui.checkBox_viaDate.isChecked():
-            day = self.ui.lineEdit_dateDay.text()
-            month = self.ui.lineEdit_dateMonth.text()
-            year = self.ui.lineEdit_dateYear.text()
+            day = str(int(self.ui.lineEdit_dateDay.text()))
+            month = str(int(self.ui.lineEdit_dateMonth.text()))
+            year = str(int(self.ui.lineEdit_dateYear.text()))
             searchDate = year+"/"+month+"/"+day
             searchDate2 = year.replace('13', '')+"/"+month+"/"+day
             self.dbToTableView(
@@ -291,7 +295,28 @@ class Baygan():
     def enPrint(self):
         self.ui.pushButton_print.setEnabled(True)
 
-## QtableView table Sql print to printer
+    def dbTOxlsx(self):
+        try:
+            if not os.path.isdir('./backupBazdid'):
+                os.mkdir('backupBazdid')
+            Tr = self.TimeSabt.strftime("%Y%m%d%H%M")
+            workbook = Workbook('backupBazdid/BackupBazdid_{}.xlsx'.format(Tr))
+            worksheet = workbook.add_worksheet()
+            with sqlite3.connect(self.dbPath) as conn:
+                c = conn.cursor()
+                c.execute("select id, pl, ml, dw, tb, sb, nb, nm, sd, tt from BAZDID_DATE")
+                mysel = c.execute("select id, pl, ml, dw, tb, sb, nb, nm, sd, tt from BAZDID_DATE ")
+                headers = ['ردیف', 'پلاک', 'متقاضی', 'نوع انجام کار', 'تاریخ بازدید', 'ساعت بازدید', 'نقشه بردار',
+                           'نماینده', 'تاریخ ثبت', 'توضیحات']
+                for i, title in enumerate(headers):
+                    worksheet.write(0, i, title)
+                for i, row in enumerate(mysel):
+                    for j, value in enumerate(row):
+                        worksheet.write(i + 1, j, value)
+                workbook.close()
+        except:
+            self.errorM("خطا در تهیه پشتیبان از دیتابیس برنامه!")
+
     def handlePrint(self):
         dialog = QPrintDialog()
         dialog.setWindowFlags(Qt.WindowStaysOnTopHint)
@@ -397,4 +422,4 @@ class Baygan():
 
 
 if __name__ == '__main__':
-    run = Baygan()
+    run = Bazdid()
