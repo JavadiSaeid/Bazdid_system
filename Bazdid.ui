@@ -58,7 +58,7 @@ background-color: #b8d5dd;
       </property>
       <widget class="QWidget" name="tab1_inputData">
        <property name="statusTip">
-        <string>ثبت زمانبندی بازدید  پروندها</string>
+        <string>فرم ثبت تعیین وقت بازدید </string>
        </property>
        <property name="whatsThis">
         <string/>
