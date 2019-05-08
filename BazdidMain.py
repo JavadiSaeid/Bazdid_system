@@ -325,7 +325,7 @@ class Bazdid():
     def handlePreview(self):
         dialog = QPrintPreviewDialog()
         icon = QIcon()
-        icon.addPixmap(QPixmap(":/QIcon/Backup/icons/Archiver.png"), QIcon.Normal, QIcon.Off)
+        icon.addPixmap(QPixmap(":/QIcon/Backup/iconn.png"), QIcon.Normal, QIcon.Off)
         dialog.setWindowIcon(icon)
         dialog.setWindowTitle("پیش نمایش چاپ")
         dialog.paintRequested.connect(self.handlePaintRequest)

@@ -14,7 +14,7 @@ class Ui_MainWindow(object):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(630, 696)
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(":/QIcon/Backup/icons/Archiver.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap(":/QIcon/Backup/iconn.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         MainWindow.setWindowIcon(icon)
         MainWindow.setLayoutDirection(QtCore.Qt.RightToLeft)
         MainWindow.setStyleSheet("QMainWindow{\n"
@@ -870,7 +870,7 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "سامانه زمانبندی بازدید ثبت ماسال"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "تعیین وقت بازدید ثبت ماسال"))
         self.tab1_inputData.setStatusTip(_translate("MainWindow", "ثبت زمانبندی بازدید  پروندها"))
         self.groupBox_inputData.setTitle(_translate("MainWindow", "فرم ثبت زمانبندی بازدید"))
         self.lineEdit_sangFari.setToolTip(_translate("MainWindow", "<html><head/><body><p>سنگ <span style=\" font-weight:600; color:#724c00;\">فرعی</span> را وارد کنید</p></body></html>"))

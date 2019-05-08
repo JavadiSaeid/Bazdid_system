@@ -11,11 +11,11 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>سامانه زمانبندی بازدید ثبت ماسال</string>
+   <string>تعیین وقت بازدید ثبت ماسال</string>
   </property>
   <property name="windowIcon">
-   <iconset>
-    <normaloff>:/QIcon/Backup/icons/Archiver.png</normaloff>:/QIcon/Backup/icons/Archiver.png</iconset>
+   <iconset resource="icon.qrc">
+    <normaloff>:/QIcon/Backup/iconn.png</normaloff>:/QIcon/Backup/iconn.png</iconset>
   </property>
   <property name="layoutDirection">
    <enum>Qt::RightToLeft</enum>
