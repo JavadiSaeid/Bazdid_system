@@ -317,6 +317,7 @@ class Bazdid():
                     for j, value in enumerate(row):
                         worksheet.write(i + 1, j, value)
                 workbook.close()
+                self.errorM(errorText="پشتیبان گیری از دیتابیس با موفقیت انجام شد.", icon='Information')
         except:
             self.errorM("خطا در تهیه پشتیبان از دیتابیس برنامه!")
 
@@ -383,9 +384,12 @@ class Bazdid():
         self.ui.lineEdit_dateMonth_2.setText('')
         self.ui.lineEdit_hour.setText('')
 
-    def errorM(self,errorText='مشکلی پیش آمده است !!!'):
+    def errorM(self,errorText='مشکلی پیش آمده است !!!', icon=''):
         box = QMessageBox()
-        box.setIcon(QMessageBox.Warning)
+        if icon == '':
+            box.setIcon(QMessageBox.Warning)
+        else:
+            box.setIcon(QMessageBox.Information)
         box.setWindowTitle('ارور')
         box.setText(errorText)
         box.setStandardButtons(QMessageBox.Yes)
