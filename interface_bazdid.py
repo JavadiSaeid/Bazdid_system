@@ -931,7 +931,7 @@ class Ui_MainWindow(object):
         self.pushButton_new.setToolTip(_translate("MainWindow", "<html><head/><body><p dir=\"rtl\">پاکسازی فرم برای ثبت اطلاعات جدید</p><p dir=\"rtl\">کلید میانبر CTRL+N</p></body></html>"))
         self.pushButton_new.setText(_translate("MainWindow", "   جدید   "))
         self.pushButton_new.setShortcut(_translate("MainWindow", "Ctrl+N"))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab1_inputData), _translate("MainWindow", "ورود اطلاعات"))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab1_inputData), _translate("MainWindow", "ثبت اطلاعات"))
         self.tab2_SearchData.setStatusTip(_translate("MainWindow", " بازیابی پلاک های تعیین وقت شده"))
         self.groupBox.setTitle(_translate("MainWindow", "فرم بازیابی اطلاعات ثبت شده"))
         self.lineEdit_sangFari_2.setToolTip(_translate("MainWindow", "<html><head/><body><p>سنگ <span style=\" font-weight:600; color:#724c00;\">فرعی</span> را وارد کنید</p></body></html>"))

@@ -148,19 +148,21 @@ class Bazdid():
             self.ui.checkBox_viaDate.setEnabled(True)
 
     def getUpdateVriable(self):
-        self.sangAsli_1 = self.ui.lineEdit_sangAsli.text()
-        self.sangFari_1 = self.ui.lineEdit_sangFari.text()
-        self.PL = str(self.sangAsli_1)+"/"+str(self.sangFari_1)
-        self.moteqazi = self.ui.lineEdit_moteqazi.text()
-        self.bazdid_day = str(int(self.ui.lineEdit_dateDay_2.text()))
-        self.bazdid_month = str(int(self.ui.lineEdit_dateMonth_2.text()))
-        self.bazdid_year = str(int(self.ui.lineEdit_dateYear_2.text()))
-        self.bazdid_date = self.bazdid_year + "/" + self.bazdid_month + "/" + self.bazdid_day
-        self.bazdid_Saat = self.ui.lineEdit_hour.text()
-        self.naghsheBardar = self.ui.comboBox_naghshebardar.currentText()
-        self.namayande = self.ui.comboBox_namaiande.currentText()
-        self.noeAnjamKar = self.ui.comboBox_noeAnjamKar.currentText()
-        self.tozihat = self.ui.textEdit_Tozihat.toPlainText()
+        try:
+            self.sangAsli_1 = self.ui.lineEdit_sangAsli.text()
+            self.sangFari_1 = self.ui.lineEdit_sangFari.text()
+            self.PL = str(self.sangAsli_1)+"/"+str(self.sangFari_1)
+            self.moteqazi = self.ui.lineEdit_moteqazi.text()
+            self.bazdid_day   = self.ui.lineEdit_dateDay_2.text()
+            self.bazdid_month = self.ui.lineEdit_dateMonth_2.text()
+            self.bazdid_year  = self.ui.lineEdit_dateYear_2.text()
+            self.bazdid_Saat = self.ui.lineEdit_hour.text()
+            self.naghsheBardar = self.ui.comboBox_naghshebardar.currentText()
+            self.namayande = self.ui.comboBox_namaiande.currentText()
+            self.noeAnjamKar = self.ui.comboBox_noeAnjamKar.currentText()
+            self.tozihat = self.ui.textEdit_Tozihat.toPlainText()
+        except:
+            self.errorM("خطا در ورود اطلاعات")
 
     def insertdb(self, SD, PL, DW, TB, SB, NB, NM, ML='', TT=''):
         try:
@@ -187,7 +189,8 @@ class Bazdid():
             if self.sangAsli_1 != '':
                 if self.sangFari_1 != '':
                     if (self.bazdid_year and self.bazdid_month and self.bazdid_day) != '':
-                        if self.bazdid_Saat !='':
+                        self.bazdid_date = str(int(self.bazdid_year)) + "/" + str(int(self.bazdid_month)) + "/" + str(int(self.bazdid_day))
+                        if self.bazdid_Saat != '':
                             result = self.insertdb(SD=self.TimeSabt.strftime("%Y/%m/%d"), PL=self.PL, DW=self.noeAnjamKar, TB=self.bazdid_date, SB=self.bazdid_Saat, NB=self.naghsheBardar, NM=self.namayande, ML=self.moteqazi, TT=self.tozihat)
                             if result:
                                 self.ui.statusbar.showMessage('با موفقیت ثبت شد')
@@ -290,7 +293,7 @@ class Bazdid():
                 else:
                     self.ui.statusbar.showMessage("برای پلاک {} سابقه ای موجود نیست".format(pl))
             else:
-                self.errorM('شماره پلاک به درستی وارد نشده است\n برای بازیابی کلیه پلاک ها باید هردو فیلد سنگ اصلی و فرعی خالی باشند و یا پلاک را بطور کامل وارد کنید،\n یا از طریق بخش جستجوی پیشرفته عملیات بازیابی را انجام دهید.')
+                self.errorM('شماره پلاک به درستی وارد نشده است\n برای بازیابی تمام پلاک ها باید هردو فیلد سنگ اصلی و فرعی خالی باشند و یا پلاک را بطور کامل وارد کنید،\n یا از طریق بخش جستجوی پیشرفته عملیات بازیابی را انجام دهید.')
 
     def enPrint(self):
         self.ui.pushButton_print.setEnabled(True)
