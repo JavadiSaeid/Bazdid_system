@@ -342,8 +342,9 @@ class Bazdid():
         TitrFormat.setFont(fontTitr)
         SotonFormat = QTextCharFormat()
         TitrFormat.setLayoutDirection(Qt.RightToLeft)
-        # SotonFormat.setBackground(QColor('#EEF9C9'))
         SotonFormat.setFont(fontTitr)
+        # SotonFormat.setBackground(QColor('#EEF9C9'))
+
 
         cursor.insertText(self.TableTitr+"\n", TitrFormat)
         model = self.ui.tableView_result.model()
