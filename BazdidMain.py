@@ -25,7 +25,6 @@ class Bazdid():
         self.dbPath = r'\\10.120.112.70\baygan-data\ZamanBandi_Bazdid.db'
         # self.dbPath = r'Data\ZamanBandi_Bazdid.db'
         self.onlyInt = QIntValidator()
-        # regex=QRegExp("^\*$|[0-9]+")
         regex = QRegExp("[0-9]+")
         validator = QRegExpValidator(regex)
         self.ui.lineEdit_dateYear.setText(self.nowYear)
@@ -44,7 +43,6 @@ class Bazdid():
         self.ui.lineEdit_dateDay_2.setValidator(validator)
         self.ui.lineEdit_dateDay.setMaxLength(2)
         self.ui.lineEdit_dateDay_2.setMaxLength(2)
-        # self.ui.lineEdit_sangAsli_2.setValidator(QIntValidator(1,999))
         self.ui.lineEdit_sangAsli.setValidator(validator)
         self.ui.lineEdit_sangFari.setValidator(validator)
         self.ui.lineEdit_sangAsli_2.setValidator(validator)
@@ -56,18 +54,14 @@ class Bazdid():
         self.ui.pushButton_sabt.clicked.connect(self.btn_sbt)
         self.ui.pushButton_search.clicked.connect(self.btn_search)
         self.ui.pushButton_new.clicked.connect(self.btn_New)
-
         self.ui.checkBox_viaDate.stateChanged.connect(self.viaDate)
         self.ui.checkBox_viaName.stateChanged.connect(self.viaName)
-
-
         self.ui.action_about.triggered.connect(self.RunAbout)
         self.ui.action_backup.triggered.connect(self.dbTOxlsx)
         self.ui.pushButton_print.clicked.connect(self.handlePreview)
         self.MainWindow.setWindowFlags(Qt.WindowStaysOnTopHint)
         self.ui.action_help.setEnabled(False)
         self.ui.action_ChangPassword.setEnabled(False)
-
         MainWindowGetSize = self.MainWindow.frameGeometry()
         DesktopCenter = QDesktopWidget().availableGeometry().center()
         MainWindowGetSize.moveCenter(DesktopCenter)
