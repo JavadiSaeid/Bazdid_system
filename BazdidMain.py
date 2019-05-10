@@ -169,6 +169,7 @@ class Bazdid():
                     .format(SD, PL, ML, DW, TB, SB, NB, NM, TT, getpass.getuser())
                 database.execute(insert)
                 database.commit()
+                QApplication.processEvents()
                 return 1
         except:
             return 0
@@ -228,6 +229,7 @@ class Bazdid():
             self.rowCount = projectModel.rowCount()
             self.tableResult = projectModel
             db.close()
+            QApplication.processEvents()
         except:
             self.errorM('مشکل در ارتباط با دیتابیس\n {}')
 
