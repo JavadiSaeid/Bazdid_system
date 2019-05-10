@@ -165,13 +165,10 @@ class Bazdid():
                 database.execute(BAZDID_DATE)
                 TH = self.TimeSabt.strftime("%Y/%m/%d")
                 ST = self.TimeSabt.strftime("%H:%M")
-
                 insert = "INSERT INTO BAZDID_DATE(sd, pl, ml, dw, tb, sb, nb, nm, tt, us) VALUES ('{}','{}','{}','{}','{}','{}','{}','{}','{}','{}')"\
                     .format(SD, PL, ML, DW, TB, SB, NB, NM, TT, getpass.getuser())
-
                 database.execute(insert)
                 database.commit()
-
                 return 1
         except:
             return 0
@@ -228,7 +225,6 @@ class Bazdid():
             projectModel.setHeaderData(7, Qt.Horizontal, 'تاریخ ثبت')
             projectModel.setHeaderData(8, Qt.Horizontal, 'توضیحات')
             self.ui.tableView_result.setModel(projectModel)
-            # self.ui.tableView_result.show()
             self.rowCount = projectModel.rowCount()
             self.tableResult = projectModel
             db.close()
