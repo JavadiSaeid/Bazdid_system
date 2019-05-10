@@ -336,7 +336,6 @@ class Bazdid():
         tableFormat.setCellSpacing(4)
         tableFormat.setLayoutDirection(Qt.RightToLeft)
         tableFormat.setBorderStyle(QTextTableFormat.BorderStyle_Double)
-
         TitrFormat = QTextCharFormat()
         fontTitr = QFont()
         fontTitr.setBold(True)
@@ -382,7 +381,6 @@ class Bazdid():
         box.setText(errorText)
         box.setStandardButtons(QMessageBox.Yes)
         buttonY = box.button(QMessageBox.Yes)
-
         buttonY.setText('       تایید       ')
         box.setStyleSheet("QMessageBox{\n"
                           "background-color:    #d9c9a3    ;\n"
