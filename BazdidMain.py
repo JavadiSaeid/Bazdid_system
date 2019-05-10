@@ -332,7 +332,6 @@ class Bazdid():
         tableFormat = QTextTableFormat()
         TableText = QTextCharFormat()
         TableText.setLayoutDirection(Qt.RightToLeft)
-        # tableFormat.setAlignment(Qt.AlignCenter)
         tableFormat.setBackground(QColor('#d3fbf5'))
         tableFormat.setCellPadding(3)
         tableFormat.setCellSpacing(4)
