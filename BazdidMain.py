@@ -228,13 +228,8 @@ class Bazdid():
             self.rowCount = projectModel.rowCount()
             self.tableResult = projectModel
             db.close()
-
-        except Exception as e:
-            if e.message != '':
-                errormsg = e.message
-            else:
-                errormsg = " "
-            self.errorM('مشکل در ارتباط با دیتابیس\n {}'.format(errormsg))
+        except:
+            self.errorM('مشکل در ارتباط با دیتابیس\n {}')
 
     def btn_search(self):
         self.TableTitr = ""
@@ -244,11 +239,15 @@ class Bazdid():
         self.searcherVariable()
         pl = self.sangAsli_2 + "/" + self.sangFari_2
         if self.ui.checkBox_viaDate.isChecked():
-            day = str(int(self.ui.lineEdit_dateDay.text()))
-            month = str(int(self.ui.lineEdit_dateMonth.text()))
-            year = str(int(self.ui.lineEdit_dateYear.text()))
-            searchDate = year+"/"+month+"/"+day
-            searchDate2 = year.replace('13', '')+"/"+month+"/"+day
+            day   = self.ui.lineEdit_dateDay.text()
+            month = self.ui.lineEdit_dateMonth.text()
+            year  = self.ui.lineEdit_dateYear.text()
+            if (year and month and day) != '':
+                searchDate = str(int(year))+"/"+str(int(month))+"/"+((day))
+                searchDate2 = str(int(year.replace('13', '')))+"/"+str(int(month))+"/"+str(int(day))
+            else:
+                searchDate = year+"/"+month+"/"+day
+                searchDate2 = year.replace('13', '')+"/"+month+"/"+day
             self.dbToTableView(
                 commandSQL="SELECT pl, ml, dw, tb, sb, nb, nm, sd, tt FROM BAZDID_DATE WHERE  (tb='{}' OR tb='{}') ".format(
                     searchDate, searchDate2))
