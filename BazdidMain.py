@@ -383,7 +383,6 @@ class Bazdid():
         box.setText(errorText)
         box.setStandardButtons(QMessageBox.Yes)
         buttonY = box.button(QMessageBox.Yes)
-
         buttonY.setText('       تایید       ')
         box.setStyleSheet("QMessageBox{\n"
                           "background-color:    #d9c9a3    ;\n"
