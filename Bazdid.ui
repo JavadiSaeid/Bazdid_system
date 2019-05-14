@@ -428,7 +428,12 @@ border-radius:2px;
                </item>
                <item>
                 <property name="text">
-                 <string>تحدید حدود عمومی</string>
+                 <string>قانون تعیین تکلیف</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>قانون الحاق و ساماندهی</string>
                 </property>
                </item>
                <item>
@@ -438,17 +443,12 @@ border-radius:2px;
                </item>
                <item>
                 <property name="text">
-                 <string>تعیین باقی مانده</string>
+                 <string>تحدید حدود عمومی</string>
                 </property>
                </item>
                <item>
                 <property name="text">
-                 <string>قانون تعیین تکلیف</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>قانون الحاق و ساماندهی</string>
+                 <string>تعیین باقیمانده</string>
                 </property>
                </item>
                <item>

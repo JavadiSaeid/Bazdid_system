@@ -292,10 +292,11 @@ class Bazdid():
 
     def dbTOxlsx(self):
         try:
-            if not os.path.isdir('./Backup'):
-                os.mkdir('Backup')
+            DeskTop = os.path.join(os.path.join(os.environ['USERPROFILE']), 'Desktop')
+            if not os.path.isdir(f'{DeskTop}/Backup'):
+                os.mkdir(f'{DeskTop}/Backup')
             Tr = self.TimeSabt.strftime("%Y%m%d%H%M")
-            workbook = Workbook('Backup/BackupBazdid_{}.xlsx'.format(Tr))
+            workbook = Workbook('{}/Backup/BackupBazdid_{}.xlsx'.format(DeskTop, Tr))
             worksheet = workbook.add_worksheet()
             with sqlite3.connect(self.dbPath) as conn:
                 c = conn.cursor()
@@ -311,7 +312,27 @@ class Bazdid():
                 workbook.close()
                 self.errorM(errorText="پشتیبان گیری از دیتابیس با موفقیت انجام شد.", icon='Information')
         except:
-            self.errorM("خطا در تهیه پشتیبان از دیتابیس برنامه!")
+            try:
+                if not os.path.isdir('./Backup'):
+                    os.mkdir('Backup')
+                Tr = self.TimeSabt.strftime("%Y%m%d%H%M")
+                workbook = Workbook('Backup/BackupBazdid_{}.xlsx'.format(Tr))
+                worksheet = workbook.add_worksheet()
+                with sqlite3.connect(self.dbPath) as conn:
+                    c = conn.cursor()
+                    c.execute("select id, pl, ml, dw, tb, sb, nb, nm, sd, tt from BAZDID_DATE")
+                    mysel = c.execute("select id, pl, ml, dw, tb, sb, nb, nm, sd, tt from BAZDID_DATE ")
+                    headers = ['ردیف', 'پلاک', 'متقاضی', 'نوع انجام کار', 'تاریخ بازدید', 'ساعت بازدید', 'نقشه بردار',
+                               'نماینده', 'تاریخ ثبت', 'توضیحات']
+                    for i, title in enumerate(headers):
+                        worksheet.write(0, i, title)
+                    for i, row in enumerate(mysel):
+                        for j, value in enumerate(row):
+                            worksheet.write(i + 1, j, value)
+                    workbook.close()
+                    self.errorM(errorText="پشتیبان گیری از دیتابیس با موفقیت انجام شد.", icon='Information')
+            except:
+                self.errorM("خطا در تهیه پشتیبان از دیتابیس برنامه!")
 
     def handlePrint(self):
         dialog = QPrintDialog()
