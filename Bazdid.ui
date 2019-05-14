@@ -408,12 +408,17 @@ border-radius:2px;
                </item>
                <item>
                 <property name="text">
-                 <string>آپارتمان</string>
+                 <string>افراز</string>
                 </property>
                </item>
                <item>
                 <property name="text">
-                 <string>تفکیک</string>
+                 <string>تفکیک آپارتمان</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>تفکیک عرصه</string>
                 </property>
                </item>
                <item>
@@ -423,12 +428,32 @@ border-radius:2px;
                </item>
                <item>
                 <property name="text">
-                 <string>قانون تعیین تکلیف</string>
+                 <string>تحدید حدود عمومی</string>
                 </property>
                </item>
                <item>
                 <property name="text">
                  <string>تحدید حدود اختصاصی</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>تعیین باقی مانده</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>قانون تعیین تکلیف</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>قانون الحاق و ساماندهی</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>ماده 45</string>
                 </property>
                </item>
                <item>
