@@ -247,13 +247,15 @@ class Bazdid():
             if (year and month and day) != '':
                 searchDate = str(int(year))+"/"+str(int(month))+"/"+str(int(day))
                 searchDate2 = str(int(year.replace('13', '')))+"/"+str(int(month))+"/"+str(int(day))
+                searchDate2_1 = str(int(year.replace('14', '')))+"/"+str(int(month))+"/"+str(int(day))
                 searchDate3 = str(int('13'+year))+"/"+str(int(month))+"/"+str(int(day))
+                searchDate4 = str(int('14'+year))+"/"+str(int(month))+"/"+str(int(day))
             else:
                 searchDate = year+"/"+month+"/"+day
                 searchDate2 = year.replace('13', '')+"/"+month+"/"+day
             self.dbToTableView(
                 commandSQL="SELECT pl, ml, dw, tb, sb, nb, nm, sd, tt FROM BAZDID_DATE WHERE  (tb='{}' OR tb='{}' OR tb='{}') ".format(
-                    searchDate, searchDate2, searchDate3))
+                    searchDate, searchDate2, searchDate2_1, searchDate3, searchDate4, searchDate2_1))
             if self.rowCount <= 0:
                 self.ui.statusbar.showMessage(
                     "برای تاریخ {} سابقه ای موجود نیست".format(searchDate))
