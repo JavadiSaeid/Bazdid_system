@@ -583,6 +583,11 @@ border-radius:2px;
                   </item>
                   <item>
                    <property name="text">
+                    <string>اسماعیل دولتی</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
                     <string>سایر</string>
                    </property>
                   </item>
