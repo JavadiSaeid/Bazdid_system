@@ -574,23 +574,8 @@ border-radius:2px;
                    <bool>true</bool>
                   </property>
                   <property name="currentText">
-                   <string>کیوان حسنجانی</string>
+                   <string/>
                   </property>
-                  <item>
-                   <property name="text">
-                    <string>کیوان حسنجانی</string>
-                   </property>
-                  </item>
-                  <item>
-                   <property name="text">
-                    <string>اسماعیل دولتی</string>
-                   </property>
-                  </item>
-                  <item>
-                   <property name="text">
-                    <string>سایر</string>
-                   </property>
-                  </item>
                  </widget>
                 </item>
                 <item>
@@ -684,23 +669,8 @@ border-radius:2px;
                    <bool>true</bool>
                   </property>
                   <property name="currentText">
-                   <string>سیدمحمد آتشی</string>
+                   <string/>
                   </property>
-                  <item>
-                   <property name="text">
-                    <string>سیدمحمد آتشی</string>
-                   </property>
-                  </item>
-                  <item>
-                   <property name="text">
-                    <string>علی رحمانی</string>
-                   </property>
-                  </item>
-                  <item>
-                   <property name="text">
-                    <string>سایر</string>
-                   </property>
-                  </item>
                  </widget>
                 </item>
                 <item>
