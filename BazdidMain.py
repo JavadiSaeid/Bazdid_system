@@ -147,6 +147,7 @@ class Bazdid():
             except:
                 self.ui.comboBox_naghshebardar.setEditable(True)
                 self.ui.comboBox_namaiande.setEditable(True)
+                self.ui.comboBox_noeAnjamKar.setEditable(True)
                 self.errorM("خطا در خواندن لیست نام همکاران از دیتابیس!")
 
     def RunAbout(self):
