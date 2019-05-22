@@ -1339,7 +1339,7 @@ border-right: 1px solid #fffff8;
                 </font>
                </property>
                <property name="toolTip">
-                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;سنگ &lt;span style=&quot; font-weight:600; color:#724c00;&quot;&gt;فرعی&lt;/span&gt; را وارد کنید&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p dir='rtl'&gt;پلاک &lt;span style=&quot; font-weight:600; color:#724c00;&quot;&gt;فرعی&lt;/span&gt; را وارد کنید&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                </property>
                <property name="statusTip">
                 <string/>
@@ -1351,7 +1351,7 @@ border-right: 1px solid #fffff8;
                 <set>Qt::AlignCenter</set>
                </property>
                <property name="placeholderText">
-                <string>سنگ فرعی</string>
+                <string>پلاک فرعی</string>
                </property>
               </widget>
              </item>
@@ -1401,7 +1401,7 @@ border-right: 1px solid #fffff8;
                 </font>
                </property>
                <property name="toolTip">
-                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;سنگ &lt;span style=&quot; font-weight:600; color:#875a00;&quot;&gt;اصلی&lt;/span&gt; را وارد کنید&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p dir='rtl'&gt;سنگ &lt;span style=&quot; font-weight:600; color:#875a00;&quot;&gt;اصلی&lt;/span&gt; را وارد کنید&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                </property>
                <property name="statusTip">
                 <string/>
