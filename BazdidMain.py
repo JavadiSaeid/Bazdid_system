@@ -66,8 +66,88 @@ class Bazdid():
         DesktopCenter = QDesktopWidget().availableGeometry().center()
         MainWindowGetSize.moveCenter(DesktopCenter)
         self.MainWindow.move(MainWindowGetSize.topLeft())
+        self.hamkaran_list()
         self.MainWindow.show()
         sys.exit(app.exec_())
+
+    def hamkaran_list(self):
+        try:
+            with sqlite3.connect(self.dbPath) as database:
+                NAGHSHEBARDAR_LIST = "CREATE TABLE IF NOT EXISTS NAGSHEBARDAR(nb VARCHAR(72)  UNIQUE)"
+                NAMAYANDE_LIST = "CREATE TABLE IF NOT EXISTS NAMAYANDE(nm VARCHAR(72)  UNIQUE)"
+                DW = "CREATE TABLE IF NOT EXISTS DOWORK(dw TEXT UNIQUE)"
+                database.execute(NAGHSHEBARDAR_LIST)
+                database.execute(NAMAYANDE_LIST)
+                database.execute(DW)
+                n1 = "SELECT nb FROM NAGSHEBARDAR"
+                n2 = "SELECT nm FROM NAMAYANDE"
+                n3 = "SELECT dw FROM DOWORK"
+                curser_n1 = database.execute(n1)
+                curser_n2 = database.execute(n2)
+                curser_n3 = database.execute(n3)
+                if curser_n1.fetchone() is None:
+                    nb1 = ["کیوان حسنجانی", "اسماعیل دولتی", "سایر"]
+                    for n in nb1:
+                        naghshebardar_ins = "INSERT INTO NAGSHEBARDAR(nb) values ('{}')".format(n)
+                        database.execute(naghshebardar_ins)
+                        database.commit()
+                if curser_n2.fetchone() is None:
+                    nm2 = ["سیدمحمد آتشی", "علی رحمانی", "محسن مهرافشان", "سایر"]
+                    for n in nm2:
+                        namayande_ins = "INSERT INTO NAMAYANDE(nm) values ('{}')".format(n)
+                        database.execute(namayande_ins)
+                        database.commit()
+                if curser_n3.fetchone() is None:
+                    dw = ["تعویض سند", "المثنی", "اصلاح", "افراز", "تفکیک آپارتمان", "تفکیک عرصه", "تجمیع", "قانون تعیین تکلیف", "قانون الحاق و ساماندهی", "تحدید حدود اختصاصی", "تحدید حدود عمومی", "تعیین باقیمانده", "ماده 45", "بازدید", "سایر"]
+                    for d in dw:
+                        dow = "INSERT INTO DOWORK(dw) values ('{}')".format(d)
+                        database.execute(dow)
+                        database.commit()
+                N1 = "SELECT nb FROM NAGSHEBARDAR"
+                N2 = "SELECT nm FROM NAMAYANDE"
+                N3 = "SELECT dw FROM DOWORK"
+                curser1 = database.execute(N1)
+                curser2 = database.execute(N2)
+                curser3 = database.execute(N3)
+                r = 0
+                for i in curser1:
+                    self.ui.comboBox_naghshebardar.addItem("")
+                    self.ui.comboBox_naghshebardar.setItemText(r, i[0])
+                    r += 1
+                r = 0
+                for j in curser2:
+                    self.ui.comboBox_namaiande.addItem("")
+                    self.ui.comboBox_namaiande.setItemText(r, j[0])
+                    r += 1
+                r = 0
+                for n in curser3:
+                    self.ui.comboBox_noeAnjamKar.addItem("")
+                    self.ui.comboBox_noeAnjamKar.setItemText(r, n[0])
+                    r += 1
+        except:
+            try:
+                nb1 = ["کیوان حسنجانی", "اسماعیل دولتی", "سایر"]
+                nm2 = ["سیدمحمد آتشی", "علی رحمانی", "محسن مهرافشان", "سایر"]
+                dw3 = ["تعویض سند", "تعویض سند", "المثنی", "اصلاح", "افراز", "تفکیک آپارتمان", "تفکیک عرصه", "تجمیع", "قانون تعیین تکلیف", "قانون الحاق و ساماندهی", "تحدید حدود اختصاصی", "تحدید حدود عمومی", "تعیین باقیمانده", "ماده 45", "بازدید", "سایر"]
+                r = 0
+                for i in nb1:
+                    self.ui.comboBox_naghshebardar.addItem("")
+                    self.ui.comboBox_naghshebardar.setItemText(r, i)
+                    r += 1
+                r = 0
+                for j in nm2:
+                    self.ui.comboBox_namaiande.addItem("")
+                    self.ui.comboBox_namaiande.setItemText(r, j)
+                    r += 1
+                r = 0
+                for d in dw3:
+                    self.ui.comboBox_noeAnjamKar.addItem("")
+                    self.ui.comboBox_noeAnjamKar.setItemText(r, d)
+                    r += 1
+            except:
+                self.ui.comboBox_naghshebardar.setEditable(True)
+                self.ui.comboBox_namaiande.setEditable(True)
+                self.errorM("خطا در خواندن لیست نام همکاران از دیتابیس!")
 
     def RunAbout(self):
         self.Form = QWidget()

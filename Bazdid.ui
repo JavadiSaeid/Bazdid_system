@@ -389,83 +389,8 @@ border-radius:2px;
                 <bool>true</bool>
                </property>
                <property name="currentText">
-                <string>تعویض سند</string>
+                <string/>
                </property>
-               <item>
-                <property name="text">
-                 <string>تعویض سند</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>المثنی</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>اصلاح</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>افراز</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>تفکیک آپارتمان</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>تفکیک عرصه</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>تجمیع</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>قانون تعیین تکلیف</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>قانون الحاق و ساماندهی</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>تحدید حدود اختصاصی</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>تحدید حدود عمومی</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>تعیین باقیمانده</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>ماده 45</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>بازدید</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>سایر</string>
-                </property>
-               </item>
               </widget>
              </item>
              <item>
@@ -574,23 +499,8 @@ border-radius:2px;
                    <bool>true</bool>
                   </property>
                   <property name="currentText">
-                   <string>کیوان حسنجانی</string>
+                   <string/>
                   </property>
-                  <item>
-                   <property name="text">
-                    <string>کیوان حسنجانی</string>
-                   </property>
-                  </item>
-                  <item>
-                   <property name="text">
-                    <string>اسماعیل دولتی</string>
-                   </property>
-                  </item>
-                  <item>
-                   <property name="text">
-                    <string>سایر</string>
-                   </property>
-                  </item>
                  </widget>
                 </item>
                 <item>
@@ -684,23 +594,8 @@ border-radius:2px;
                    <bool>true</bool>
                   </property>
                   <property name="currentText">
-                   <string>سیدمحمد آتشی</string>
+                   <string/>
                   </property>
-                  <item>
-                   <property name="text">
-                    <string>سیدمحمد آتشی</string>
-                   </property>
-                  </item>
-                  <item>
-                   <property name="text">
-                    <string>علی رحمانی</string>
-                   </property>
-                  </item>
-                  <item>
-                   <property name="text">
-                    <string>سایر</string>
-                   </property>
-                  </item>
                  </widget>
                 </item>
                 <item>
