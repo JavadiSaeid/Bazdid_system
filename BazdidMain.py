@@ -275,7 +275,7 @@ class Bazdid():
                     else:
                         self.errorM("لطفا تاریخ بازدید را به طور صحیح وارد کنید")
                 else:
-                    self.errorM('شماره سنگ فرعی باید وارد شود')
+                    self.errorM('شماره پلاک فرعی باید وارد شود')
             else:
                 self.errorM('شماره سنگ اصلی باید وارد شود')
         except:
