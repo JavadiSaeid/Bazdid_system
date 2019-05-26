@@ -59,7 +59,7 @@ class Bazdid():
         self.ui.action_about.triggered.connect(self.RunAbout)
         self.ui.action_backup.triggered.connect(self.dbTOxlsx)
         self.ui.pushButton_print.clicked.connect(self.handlePreview)
-        self.MainWindow.setWindowFlags(Qt.WindowStaysOnTopHint)
+        # self.MainWindow.setWindowFlags(Qt.WindowStaysOnTopHint)
         self.ui.action_help.setEnabled(False)
         self.ui.action_ChangPassword.setEnabled(False)
         MainWindowGetSize = self.MainWindow.frameGeometry()
@@ -415,6 +415,15 @@ class Bazdid():
                 Tr = self.TimeSabt.strftime("%Y%m%d%H%M")
                 workbook = Workbook('Backup/BackupBazdid_{}.xlsx'.format(Tr))
                 worksheet = workbook.add_worksheet()
+                worksheet.right_to_left()
+                header_format = workbook.add_format({'bold': True,
+                                                     'align': 'center',
+                                                     'size': '12',
+                                                     'valign': 'vcenter',
+                                                     'fg_color': '#D7E4BC',
+                                                     'border': 1})
+                worksheet.set_column('A:J', 12)
+                worksheet.set_zoom(110)
                 with sqlite3.connect(self.dbPath) as conn:
                     c = conn.cursor()
                     c.execute("select id, pl, ml, dw, tb, sb, nb, nm, sd, tt from BAZDID_DATE")
@@ -422,10 +431,15 @@ class Bazdid():
                     headers = ['ردیف', 'پلاک', 'متقاضی', 'نوع انجام کار', 'تاریخ بازدید', 'ساعت بازدید', 'نقشه بردار',
                                'نماینده', 'تاریخ ثبت', 'توضیحات']
                     for i, title in enumerate(headers):
-                        worksheet.write(0, i, title)
+                        worksheet.write(0, i, title, header_format)
+                    worksheet.freeze_panes(1, 0)
                     for i, row in enumerate(mysel):
                         for j, value in enumerate(row):
-                            worksheet.write(i + 1, j, value)
+                            if i % 2 == 0:
+                                fg_format = workbook.add_format({'fg_color': '#FFFFFF', 'align': 'center'})
+                            else:
+                                fg_format = workbook.add_format({'fg_color': '#C7F2F9', 'align': 'center'})
+                            worksheet.write(i + 1, j, value, fg_format)
                     workbook.close()
                     self.errorM(errorText="پشتیبان گیری از دیتابیس با موفقیت انجام شد.", icon='Information')
             except:
