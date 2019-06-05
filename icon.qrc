@@ -1,0 +1,5 @@
+<RCC>
+  <qresource prefix="QIcon">
+    <file>Backup/icons/Archiver.png</file>
+  </qresource>
+</RCC>
