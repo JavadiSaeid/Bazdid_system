@@ -20,7 +20,8 @@ class Baygan():
         self.ui.setupUi(self.MainWindow)
         self.dateTime()
         # self.dbPath = r'\\10.120.112.70\baygan-data\98.db'
-        self.dbPath = r'Data\98.db'
+        # self.dbPath = r'Data\98.db'
+        self.dbPath = r'D:\Programs\Sarbaz\Note\programs\MyCreatePrograms\BazdidDate\Data\98.db'
         self.onlyInt = QIntValidator()              ## just int get in LineEdir , int Value in QlineEdit
         # regex=QRegExp("^\*$|[0-9]+")
         regex = QRegExp("[0-9]+")
@@ -141,15 +142,12 @@ class Baygan():
     def getUpdateVriable(self):
         self.sangAsli_1 = self.ui.lineEdit_sangAsli.text()
         self.sangFari_1 = self.ui.lineEdit_sangFari.text()
-        self.PL = self.sangAsli_1+"/"+self.sangFari_1
+        self.PL = str(self.sangAsli_1)+"/"+str(self.sangFari_1)
         self.moteqazi = self.ui.lineEdit_moteqazi.text()
-        day = self.ui.lineEdit_dateDay.text()
-        month = self.ui.lineEdit_dateMonth.text()
-        year = self.ui.lineEdit_dateYear.text()
-        if day != '' and month != '' and year != '':
-            self.bazdid_date = year + "/" + month + "/" + day
-        else:
-            self.errorM(errorText="لطفا تاریخ بازدید را صحیح وارد کنید")
+        self.bazdid_day = self.ui.lineEdit_dateDay_2.text()
+        self.bazdid_month = self.ui.lineEdit_dateMonth_2.text()
+        self.bazdid_year = self.ui.lineEdit_dateYear_2.text()
+        self.bazdid_date = self.bazdid_year + "/" + self.bazdid_month + "/" + self.bazdid_day
         self.bazdid_Saat = self.ui.lineEdit_hour.text()
         self.naghsheBardar = self.ui.comboBox_naghshebardar.currentText()
         self.namayande = self.ui.comboBox_namaiande.currentText()
@@ -159,35 +157,20 @@ class Baygan():
     def insertdb(self, SD, PL, DW, TB, SB, NB, NM, ML='', TT=''):
         try:
             with sqlite3.connect(self.dbPath) as database:
-                IT_BAYGAN = "CREATE TABLE IF NOT EXISTS IT_BAYGAN (id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,th VARCHAR(50),st VARCHAR(50),tr VARCHAR(50) ," \
-                        "sn VARCHAR(60),jd VARCHAR(10),pg VARCHAR(15), bh VARCHAR (10),hr varchar (60),tg VARCHAR (50),er varchar (50),tt TEXT,bt varchar (30),bs varchar (30),us VARCHAR (72),sn_bh VARCHAR(50) REFERENCES STATUS_BAYGAN(sn_bh))"
-                STATUS_BAYGAN = "CREATE TABLE IF NOT EXISTS STATUS_BAYGAN(sn_bh VARCHAR(50) NOT NULL UNIQUE PRIMARY KEY, ss VARCHAR(60))"
-                USERS_BAYGAN = "CREATE TABLE IF NOT EXISTS USERS_BAYGAN(id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,us varchar (60) NOT NULL UNIQUE, pw VARCHAR(60) NOT NULL)"
-
-                database.execute(STATUS_BAYGAN)
-                database.execute(IT_BAYGAN)
-                database.execute(USERS_BAYGAN)
+                BAZDID_DATE = """CREATE TABLE IF NOT EXISTS BAZDID_DATE (id INTEGER      PRIMARY KEY AUTOINCREMENT,sd VARCHAR (20),pl VARCHAR (20), ml TEXT,dw TEXT,tb VARCHAR (20),sb VARCHAR (10),nb TEXT,nm TEXT, tt TEXT,us VARCHAR (72) )"""
+                database.execute(BAZDID_DATE)
                 TH = self.TimeSabt.strftime("%Y/%m/%d")
                 ST = self.TimeSabt.strftime("%H:%M")
-                if TR == 'پرونده':
-                    SN = SA+"/"+SF
-                    SNBH = SA+"/"+SF+"-"+BH
-                else:
-                    BH = ''
-                    SN = SA
-                    SNBH = SN
-                insert = "INSERT INTO IT_BAYGAN(th,st,tr,sn,bh,hr,tg,er,tt,bt,bs,sn_bh,us,jd,pg) VALUES ('{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}')"\
-                    .format(TH, ST, TR, SN, BH, HR, TG, ER, TT, BT,BS, SNBH,getpass.getuser(),JD,PG)
-                instatus = "INSERT OR REPLACE INTO STATUS_BAYGAN(sn_bh, ss) VALUES ('{}', 'Exit')".format(SNBH,SNBH)
+
+                insert = "INSERT INTO BAZDID_DATE(sd, pl, ml, dw, tb, sb, nb, nm, tt, us) VALUES ('{}','{}','{}','{}','{}','{}','{}','{}','{}','{}')"\
+                    .format(SD, PL, ML, DW, TB, SB, NB, NM, TT, getpass.getuser())
+
                 database.execute(insert)
-                database.execute(instatus)
                 database.commit()
-        except Exception as e:
-            if e.message != '':
-                errormsg = e.message
-            else:
-                errormsg = " "
-            self.errorM('مشکل در ارتباط با دیتابیس\n {}'.format(errormsg))
+
+                return 1
+        except:
+            return 0
 
     def btn_sbt(self):
         self.getUpdateVriable()
@@ -195,9 +178,18 @@ class Baygan():
         try:
             if self.sangAsli_1 != '':
                 if self.sangFari_1 != '':
-                    self.insertdb(SD=self.TimeSabt.strftime("%Y/%m/%d"), PL=self.PL, ML=self.moteqazi,DW =self.noeAnjamKar,TB=self.bazdid_date,SB=self.bazdid_Saat, NB=self.naghsheBardar, NM=self.namayande, TT=self.tozihat)
-                    self.ui.statusbar.showMessage('با موفقیت ثبت شد')
-                    self.btn_New()
+                    if (self.bazdid_year and self.bazdid_month and self.bazdid_day) != '':
+                        if self.bazdid_Saat !='':
+                            result = self.insertdb(SD=self.TimeSabt.strftime("%Y/%m/%d"), PL=self.PL, DW=self.noeAnjamKar, TB=self.bazdid_date, SB=self.bazdid_Saat, NB=self.naghsheBardar, NM=self.namayande, ML=self.moteqazi, TT=self.tozihat)
+                            if result:
+                                self.ui.statusbar.showMessage('با موفقیت ثبت شد')
+                                self.btn_New()
+                            else:
+                                self.errorM('مشکلی در ارتباط با دیتابیس بوجود آمده است!')
+                        else:
+                            self.errorM('لطفا ساعت بازدید را وارد کنید')
+                    else:
+                        self.errorM("لطفا تاریخ بازدید را به طور صحیح وارد کنید")
                 else:
                     self.errorM('شماره سنگ فرعی باید وارد شود')
             else:
@@ -205,7 +197,7 @@ class Baygan():
         except:
             self.ui.statusbar.showMessage('خطا در ثبت اطلاعات')
             self.errorM(' خطایی در ثبت اطلاعات بوجود امده است \n این خطا را به مدیر سیستم اطلاع دهید')
-            pass
+
 
     def searcherVariable(self):
         self.sangAsli_2 = self.ui.lineEdit_sangAsli_2.text()
@@ -540,8 +532,10 @@ class Baygan():
         self.ui.lineEdit_sangFari.setText('')
         self.ui.lineEdit_sangAsli.setText('')
         self.ui.textEdit_Tozihat.setText('')
-        self.ui.lineEdit_jeld.setText('')
-        self.ui.lineEdit_safahat.setText('')
+        self.ui.lineEdit_moteqazi.setText('')
+        self.ui.lineEdit_dateDay_2.setText('')
+        self.ui.lineEdit_dateMonth_2.setText('')
+        self.ui.lineEdit_hour.setText('')
 
     def errorM(self,errorText='مشکلی پیش آمده است !!!'):
         box = QMessageBox()
