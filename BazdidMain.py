@@ -22,8 +22,8 @@ class Bazdid():
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self.MainWindow)
         self.dateTime()
-        self.dbPath = r'\\10.120.112.70\baygan-data\ZamanBandi_Bazdid.db'
-        # self.dbPath = r'Data\ZamanBandi_Bazdid.db'
+        # self.dbPath = r'\\10.120.112.70\baygan-data\ZamanBandi_Bazdid.db'
+        self.dbPath = r'Data\ZamanBandi_Bazdid.db'
         self.onlyInt = QIntValidator()
         regex = QRegExp("[0-9]+")
         validator = QRegExpValidator(regex)
@@ -54,11 +54,12 @@ class Bazdid():
         self.ui.pushButton_sabt.clicked.connect(self.btn_sbt)
         self.ui.pushButton_search.clicked.connect(self.btn_search)
         self.ui.pushButton_new.clicked.connect(self.btn_New)
-        self.ui.checkBox_viaDate.stateChanged.connect(self.viaDate)
-        self.ui.checkBox_viaName.stateChanged.connect(self.viaName)
+        self.ui.radioButton_viaDate.toggled.connect(self.viaDate)
+        self.ui.radioButton_viaName.toggled.connect(self.viaName)
         self.ui.action_about.triggered.connect(self.RunAbout)
         self.ui.action_backup.triggered.connect(self.dbTOxlsx)
         self.ui.pushButton_print.clicked.connect(self.handlePreview)
+        # self.ui.pushButton_getExcel.clicked.connect(self.ResultToExcel)
         # self.MainWindow.setWindowFlags(Qt.WindowStaysOnTopHint)
         self.ui.action_help.setEnabled(False)
         self.ui.action_ChangPassword.setEnabled(False)
@@ -186,33 +187,35 @@ class Bazdid():
             self.btn_search()
 
     def viaDate(self):
-        if self.ui.checkBox_viaDate.isChecked():
+        if self.ui.radioButton_viaDate.isChecked():
             self.ui.lineEdit_dateDay.setEnabled(True)
             self.ui.lineEdit_dateMonth.setEnabled(True)
             self.ui.lineEdit_dateYear.setEnabled(True)
+            self.ui.checkBox_nextDays.setEnabled(True)
             self.ui.lineEdit_sangAsli_2.setEnabled(False)
             self.ui.lineEdit_sangAsli_2.setText('')
             self.ui.lineEdit_sangFari_2.setEnabled(False)
             self.ui.lineEdit_sangFari_2.setText('')
-            self.ui.checkBox_viaName.setEnabled(False)
+            # self.ui.radioButton_viaName.setEnabled(False)
             self.ui.lineEdit_moteqazi_2.setEnabled(False)
         else:
             self.ui.lineEdit_dateDay.setEnabled(False)
             self.ui.lineEdit_dateMonth.setEnabled(False)
             self.ui.lineEdit_dateYear.setEnabled(False)
+            self.ui.checkBox_nextDays.setEnabled(False)
             self.ui.lineEdit_sangAsli_2.setEnabled(True)
             self.ui.lineEdit_sangFari_2.setEnabled(True)
-            self.ui.checkBox_viaName.setEnabled(True)
+            # self.ui.radioButton_viaName.setEnabled(True)
 
     def viaName(self):
-        if self.ui.checkBox_viaName.isChecked():
+        if self.ui.radioButton_viaName.isChecked():
             self.ui.lineEdit_moteqazi_2.setEnabled(True)
             self.ui.lineEdit_dateDay.setEnabled(False)
             self.ui.lineEdit_dateMonth.setEnabled(False)
             self.ui.lineEdit_dateYear.setEnabled(False)
             self.ui.lineEdit_sangAsli_2.setEnabled(False)
             self.ui.lineEdit_sangFari_2.setEnabled(False)
-            self.ui.checkBox_viaDate.setEnabled(False)
+            # self.ui.radioButton_viaDate.setEnabled(False)
             self.ui.lineEdit_sangAsli_2.setText('')
             self.ui.lineEdit_sangFari_2.setText('')
         else:
@@ -220,7 +223,7 @@ class Bazdid():
             self.ui.lineEdit_moteqazi_2.setEnabled(False)
             self.ui.lineEdit_sangAsli_2.setEnabled(True)
             self.ui.lineEdit_sangFari_2.setEnabled(True)
-            self.ui.checkBox_viaDate.setEnabled(True)
+            # self.ui.radioButton_viaDate.setEnabled(True)
 
     def getUpdateVriable(self):
         try:
@@ -319,9 +322,10 @@ class Bazdid():
         Tr = self.TimeSabt.strftime("%Y/%m/%d")
         Ts = self.TimeSabt.strftime("%H:%M")
         self.ui.pushButton_print.setEnabled(False)
+        self.ui.pushButton_getExcel.setEnabled(False)
         self.searcherVariable()
         pl = self.sangAsli_2 + "/" + self.sangFari_2
-        if self.ui.checkBox_viaDate.isChecked():
+        if self.ui.radioButton_viaDate.isChecked():
             day   = self.ui.lineEdit_dateDay.text()
             month = self.ui.lineEdit_dateMonth.text()
             year  = self.ui.lineEdit_dateYear.text()
@@ -343,7 +347,7 @@ class Bazdid():
             else:
                 self.TableTitr = f" تمام سوابق ثبت شده موجود برای تاریخ  {searchDate} "
                 self.enPrint()
-        elif self.ui.checkBox_viaName.isChecked():
+        elif self.ui.radioButton_viaName.isChecked():
             name = self.ui.lineEdit_moteqazi_2.text()
             self.dbToTableView(commandSQL="SELECT pl, ml, dw, tb, sb, nb, nm, sd, tt FROM BAZDID_DATE WHERE  ml LIKE  '%{}%' ".format(name))
             if self.rowCount <= 0:
@@ -372,6 +376,7 @@ class Bazdid():
 
     def enPrint(self):
         self.ui.pushButton_print.setEnabled(True)
+        self.ui.pushButton_getExcel.setEnabled(True)
 
     def dbTOxlsx(self):
         try:

@@ -14,7 +14,7 @@
    <string>تعیین وقت بازدید ثبت ماسال</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="icon.qrc">
+   <iconset>
     <normaloff>:/QIcon/Backup/iconn.png</normaloff>:/QIcon/Backup/iconn.png</iconset>
   </property>
   <property name="layoutDirection">
@@ -1266,7 +1266,7 @@ border-bottom-width: 2px;
 }
 QRadioButton{
 background-color: rgba(0, 0, 0, 0);
-font: 75 14pt &quot;A Arghavan&quot;;
+font: 75 12pt &quot;A Arsoo&quot;;
 }
 QLabel{
 background-color: rgba(0, 0, 0, 0);
@@ -1306,147 +1306,12 @@ border-right: 1px solid #fffff8;
            <string>فرم بازیابی اطلاعات ثبت شده</string>
           </property>
           <layout class="QGridLayout" name="gridLayout_7">
-           <item row="0" column="0">
-            <layout class="QHBoxLayout" name="horizontalLayout_Sang_2">
-             <item>
-              <spacer name="horizontalSpacer_17">
-               <property name="enabled">
-                <bool>true</bool>
-               </property>
-               <property name="orientation">
-                <enum>Qt::Horizontal</enum>
-               </property>
-               <property name="sizeHint" stdset="0">
-                <size>
-                 <width>38</width>
-                 <height>20</height>
-                </size>
-               </property>
-              </spacer>
-             </item>
-             <item>
-              <widget class="QLineEdit" name="lineEdit_sangFari_2">
-               <property name="enabled">
-                <bool>true</bool>
-               </property>
-               <property name="font">
-                <font>
-                 <family>B Nazanin</family>
-                 <pointsize>14</pointsize>
-                 <weight>75</weight>
-                 <italic>false</italic>
-                 <bold>true</bold>
-                </font>
-               </property>
-               <property name="toolTip">
-                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p dir='rtl'&gt;پلاک &lt;span style=&quot; font-weight:600; color:#724c00;&quot;&gt;فرعی&lt;/span&gt; را وارد کنید&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-               </property>
-               <property name="statusTip">
-                <string/>
-               </property>
-               <property name="styleSheet">
-                <string notr="true"/>
-               </property>
-               <property name="alignment">
-                <set>Qt::AlignCenter</set>
-               </property>
-               <property name="placeholderText">
-                <string>پلاک فرعی</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLabel" name="label_6">
-               <property name="enabled">
-                <bool>true</bool>
-               </property>
-               <property name="sizePolicy">
-                <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                 <horstretch>0</horstretch>
-                 <verstretch>0</verstretch>
-                </sizepolicy>
-               </property>
-               <property name="font">
-                <font>
-                 <family>A Arsoo</family>
-                 <pointsize>18</pointsize>
-                 <weight>9</weight>
-                 <italic>false</italic>
-                 <bold>false</bold>
-                </font>
-               </property>
-               <property name="text">
-                <string>/</string>
-               </property>
-               <property name="alignment">
-                <set>Qt::AlignCenter</set>
-               </property>
-               <property name="margin">
-                <number>5</number>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLineEdit" name="lineEdit_sangAsli_2">
-               <property name="enabled">
-                <bool>true</bool>
-               </property>
-               <property name="font">
-                <font>
-                 <family>B Nazanin</family>
-                 <pointsize>14</pointsize>
-                 <weight>75</weight>
-                 <italic>false</italic>
-                 <bold>true</bold>
-                </font>
-               </property>
-               <property name="toolTip">
-                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p dir='rtl'&gt;سنگ &lt;span style=&quot; font-weight:600; color:#875a00;&quot;&gt;اصلی&lt;/span&gt; را وارد کنید&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-               </property>
-               <property name="statusTip">
-                <string/>
-               </property>
-               <property name="styleSheet">
-                <string notr="true"/>
-               </property>
-               <property name="locale">
-                <locale language="English" country="UnitedStates"/>
-               </property>
-               <property name="inputMethodHints">
-                <set>Qt::ImhHiddenText</set>
-               </property>
-               <property name="alignment">
-                <set>Qt::AlignCenter</set>
-               </property>
-               <property name="placeholderText">
-                <string>سنگ اصلی</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <spacer name="horizontalSpacer_18">
-               <property name="enabled">
-                <bool>true</bool>
-               </property>
-               <property name="orientation">
-                <enum>Qt::Horizontal</enum>
-               </property>
-               <property name="sizeHint" stdset="0">
-                <size>
-                 <width>38</width>
-                 <height>20</height>
-                </size>
-               </property>
-              </spacer>
-             </item>
-            </layout>
-           </item>
            <item row="1" column="0">
             <widget class="QGroupBox" name="groupBox_2">
              <property name="maximumSize">
               <size>
                <width>16777215</width>
-               <height>100</height>
+               <height>120</height>
               </size>
              </property>
              <property name="toolTip">
@@ -1481,9 +1346,74 @@ border-radius: 3px;
               <item row="0" column="0">
                <layout class="QVBoxLayout" name="verticalLayout_3">
                 <item>
-                 <layout class="QHBoxLayout" name="horizontalLayout_4">
+                 <layout class="QHBoxLayout" name="horizontalLayout_7">
                   <item>
-                   <widget class="QCheckBox" name="checkBox_viaDate">
+                   <widget class="QRadioButton" name="radioButton_doWork">
+                    <property name="text">
+                     <string>بازیابی بر اساس نوع انجام کار</string>
+                    </property>
+                    <property name="checked">
+                     <bool>true</bool>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <spacer name="horizontalSpacer_21">
+                    <property name="orientation">
+                     <enum>Qt::Horizontal</enum>
+                    </property>
+                    <property name="sizeType">
+                     <enum>QSizePolicy::Expanding</enum>
+                    </property>
+                    <property name="sizeHint" stdset="0">
+                     <size>
+                      <width>160</width>
+                      <height>24</height>
+                     </size>
+                    </property>
+                   </spacer>
+                  </item>
+                  <item>
+                   <widget class="QComboBox" name="comboBox_searchDoWork">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
+                    <property name="minimumSize">
+                     <size>
+                      <width>200</width>
+                      <height>0</height>
+                     </size>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <spacer name="horizontalSpacer_22">
+                    <property name="orientation">
+                     <enum>Qt::Horizontal</enum>
+                    </property>
+                    <property name="sizeType">
+                     <enum>QSizePolicy::Expanding</enum>
+                    </property>
+                    <property name="sizeHint" stdset="0">
+                     <size>
+                      <width>200</width>
+                      <height>24</height>
+                     </size>
+                    </property>
+                   </spacer>
+                  </item>
+                 </layout>
+                </item>
+                <item>
+                 <layout class="QHBoxLayout" name="horizontalLayout_4">
+                  <property name="topMargin">
+                   <number>4</number>
+                  </property>
+                  <item>
+                   <widget class="QRadioButton" name="radioButton_viaDate">
                     <property name="toolTip">
                      <string>بازیابی سوابق ثبت شده به تاریخ</string>
                     </property>
@@ -1496,13 +1426,13 @@ border-radius: 3px;
                    </widget>
                   </item>
                   <item>
-                   <spacer name="horizontalSpacer_24">
+                   <spacer name="horizontalSpacer_23">
                     <property name="orientation">
                      <enum>Qt::Horizontal</enum>
                     </property>
                     <property name="sizeHint" stdset="0">
                      <size>
-                      <width>125</width>
+                      <width>145</width>
                       <height>24</height>
                      </size>
                     </property>
@@ -1752,14 +1682,40 @@ border-radius: 3px;
                    </layout>
                   </item>
                   <item>
-                   <spacer name="horizontalSpacer_23">
+                   <spacer name="horizontalSpacer_24">
+                    <property name="orientation">
+                     <enum>Qt::Horizontal</enum>
+                    </property>
+                    <property name="sizeType">
+                     <enum>QSizePolicy::Minimum</enum>
+                    </property>
+                    <property name="sizeHint" stdset="0">
+                     <size>
+                      <width>10</width>
+                      <height>24</height>
+                     </size>
+                    </property>
+                   </spacer>
+                  </item>
+                  <item>
+                   <widget class="QCheckBox" name="checkBox_nextDays">
+                    <property name="enabled">
+                     <bool>false</bool>
+                    </property>
+                    <property name="text">
+                     <string>به بعد</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <spacer name="horizontalSpacer_30">
                     <property name="orientation">
                      <enum>Qt::Horizontal</enum>
                     </property>
                     <property name="sizeHint" stdset="0">
                      <size>
-                      <width>164</width>
-                      <height>24</height>
+                      <width>150</width>
+                      <height>20</height>
                      </size>
                     </property>
                    </spacer>
@@ -1768,8 +1724,11 @@ border-radius: 3px;
                 </item>
                 <item>
                  <layout class="QHBoxLayout" name="horizontalLayout_5">
+                  <property name="topMargin">
+                   <number>4</number>
+                  </property>
                   <item>
-                   <widget class="QCheckBox" name="checkBox_viaName">
+                   <widget class="QRadioButton" name="radioButton_viaName">
                     <property name="toolTip">
                      <string>بازیابی سوابق ثبت شده به نام متقاضی</string>
                     </property>
@@ -1788,7 +1747,7 @@ border-radius: 3px;
                     </property>
                     <property name="sizeHint" stdset="0">
                      <size>
-                      <width>125</width>
+                      <width>130</width>
                       <height>24</height>
                      </size>
                     </property>
@@ -1799,9 +1758,15 @@ border-radius: 3px;
                     <property name="enabled">
                      <bool>false</bool>
                     </property>
+                    <property name="minimumSize">
+                     <size>
+                      <width>0</width>
+                      <height>0</height>
+                     </size>
+                    </property>
                     <property name="maximumSize">
                      <size>
-                      <width>16777215</width>
+                      <width>260</width>
                       <height>16777215</height>
                      </size>
                     </property>
@@ -1850,6 +1815,141 @@ border-bottom-width: 2px;</string>
              </layout>
             </widget>
            </item>
+           <item row="0" column="0">
+            <layout class="QHBoxLayout" name="horizontalLayout_Sang_2">
+             <item>
+              <spacer name="horizontalSpacer_17">
+               <property name="enabled">
+                <bool>true</bool>
+               </property>
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>38</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="lineEdit_sangFari_2">
+               <property name="enabled">
+                <bool>true</bool>
+               </property>
+               <property name="font">
+                <font>
+                 <family>B Nazanin</family>
+                 <pointsize>14</pointsize>
+                 <weight>75</weight>
+                 <italic>false</italic>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="toolTip">
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p dir='rtl'&gt;پلاک &lt;span style=&quot; font-weight:600; color:#724c00;&quot;&gt;فرعی&lt;/span&gt; را وارد کنید&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               </property>
+               <property name="statusTip">
+                <string/>
+               </property>
+               <property name="styleSheet">
+                <string notr="true"/>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignCenter</set>
+               </property>
+               <property name="placeholderText">
+                <string>پلاک فرعی</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_6">
+               <property name="enabled">
+                <bool>true</bool>
+               </property>
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="font">
+                <font>
+                 <family>A Arsoo</family>
+                 <pointsize>18</pointsize>
+                 <weight>9</weight>
+                 <italic>false</italic>
+                 <bold>false</bold>
+                </font>
+               </property>
+               <property name="text">
+                <string>/</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignCenter</set>
+               </property>
+               <property name="margin">
+                <number>5</number>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="lineEdit_sangAsli_2">
+               <property name="enabled">
+                <bool>true</bool>
+               </property>
+               <property name="font">
+                <font>
+                 <family>B Nazanin</family>
+                 <pointsize>14</pointsize>
+                 <weight>75</weight>
+                 <italic>false</italic>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="toolTip">
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p dir='rtl'&gt;سنگ &lt;span style=&quot; font-weight:600; color:#875a00;&quot;&gt;اصلی&lt;/span&gt; را وارد کنید&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               </property>
+               <property name="statusTip">
+                <string/>
+               </property>
+               <property name="styleSheet">
+                <string notr="true"/>
+               </property>
+               <property name="locale">
+                <locale language="English" country="UnitedStates"/>
+               </property>
+               <property name="inputMethodHints">
+                <set>Qt::ImhHiddenText</set>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignCenter</set>
+               </property>
+               <property name="placeholderText">
+                <string>سنگ اصلی</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <spacer name="horizontalSpacer_18">
+               <property name="enabled">
+                <bool>true</bool>
+               </property>
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>38</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+            </layout>
+           </item>
            <item row="2" column="0">
             <layout class="QHBoxLayout" name="horizontalLayout_2">
              <property name="spacing">
@@ -1859,7 +1959,7 @@ border-bottom-width: 2px;</string>
               <number>20</number>
              </property>
              <property name="topMargin">
-              <number>1</number>
+              <number>8</number>
              </property>
              <property name="rightMargin">
               <number>20</number>
@@ -1970,10 +2070,19 @@ border-radius: 10px;
              <property name="toolTip">
               <string>نمایش نتیجه جستجو</string>
              </property>
+             <property name="gridStyle">
+              <enum>Qt::SolidLine</enum>
+             </property>
             </widget>
            </item>
            <item row="4" column="0">
             <layout class="QHBoxLayout" name="horizontalLayout_btnNew_2">
+             <property name="spacing">
+              <number>2</number>
+             </property>
+             <property name="sizeConstraint">
+              <enum>QLayout::SetDefaultConstraint</enum>
+             </property>
              <property name="leftMargin">
               <number>10</number>
              </property>
@@ -1995,11 +2104,64 @@ border-radius: 10px;
                 <enum>Qt::Horizontal</enum>
                </property>
                <property name="sizeType">
-                <enum>QSizePolicy::Fixed</enum>
+                <enum>QSizePolicy::Expanding</enum>
                </property>
                <property name="sizeHint" stdset="0">
                 <size>
                  <width>90</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+             <item>
+              <widget class="QPushButton" name="pushButton_getExcel">
+               <property name="enabled">
+                <bool>false</bool>
+               </property>
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>100</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QPushButton:hover:!pressed
+{
+  border: 2px dashed   #039cff  ;
+	background-color:  #cddbab  ;
+	color:   #d101ff  ;
+}
+QPushButton{
+background-color:#64A3F8;
+font: 14pt &quot;A Arsoo&quot;;
+color: #EE2121;
+border: 1px solid   #2bff01 ;;
+border-radius: 10px;
+}</string>
+               </property>
+               <property name="text">
+                <string>دریافت فایل</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <spacer name="horizontalSpacer_31">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeType">
+                <enum>QSizePolicy::Minimum</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>20</width>
                  <height>20</height>
                 </size>
                </property>
@@ -2054,7 +2216,7 @@ border-radius: 10px;
                 <enum>Qt::Horizontal</enum>
                </property>
                <property name="sizeType">
-                <enum>QSizePolicy::Fixed</enum>
+                <enum>QSizePolicy::Expanding</enum>
                </property>
                <property name="sizeHint" stdset="0">
                 <size>
@@ -2081,7 +2243,7 @@ border-radius: 10px;
      <x>0</x>
      <y>0</y>
      <width>630</width>
-     <height>21</height>
+     <height>20</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu">
@@ -2144,14 +2306,12 @@ border-radius: 10px;
   <tabstop>pushButton_new</tabstop>
   <tabstop>lineEdit_sangAsli_2</tabstop>
   <tabstop>lineEdit_sangFari_2</tabstop>
-  <tabstop>checkBox_viaDate</tabstop>
   <tabstop>lineEdit_dateDay</tabstop>
   <tabstop>lineEdit_dateMonth</tabstop>
   <tabstop>lineEdit_dateYear</tabstop>
-  <tabstop>checkBox_viaName</tabstop>
+  <tabstop>radioButton_viaName</tabstop>
   <tabstop>lineEdit_moteqazi_2</tabstop>
   <tabstop>pushButton_search</tabstop>
-  <tabstop>pushButton_print</tabstop>
   <tabstop>tableView_result</tabstop>
  </tabstops>
  <resources>
