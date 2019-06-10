@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'Bazdid.ui'
 #
-# Created by: PyQt5 UI code generator 5.12.1
+# Created by: PyQt5 UI code generator 5.12.2
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -559,6 +559,7 @@ class Ui_MainWindow(object):
         self.comboBox_searchDoWork.setSizePolicy(sizePolicy)
         self.comboBox_searchDoWork.setMinimumSize(QtCore.QSize(200, 0))
         self.comboBox_searchDoWork.setObjectName("comboBox_searchDoWork")
+        self.comboBox_searchDoWork.addItem("")
         self.horizontalLayout_7.addWidget(self.comboBox_searchDoWork)
         spacerItem18 = QtWidgets.QSpacerItem(200, 24, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_7.addItem(spacerItem18)
@@ -858,7 +859,7 @@ class Ui_MainWindow(object):
         self.gridLayout.addWidget(self.tabWidget, 0, 1, 1, 1)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 630, 20))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 630, 21))
         self.menubar.setObjectName("menubar")
         self.menu = QtWidgets.QMenu(self.menubar)
         self.menu.setObjectName("menu")
@@ -962,6 +963,7 @@ class Ui_MainWindow(object):
         self.groupBox_2.setToolTip(_translate("MainWindow", "بازیابی پرونده های تعیین وقت شده به تاریخ"))
         self.groupBox_2.setTitle(_translate("MainWindow", "بازیابی پیشرفته"))
         self.radioButton_doWork.setText(_translate("MainWindow", "بازیابی بر اساس نوع انجام کار"))
+        self.comboBox_searchDoWork.setItemText(0, _translate("MainWindow", "همه موارد"))
         self.radioButton_viaDate.setToolTip(_translate("MainWindow", "بازیابی سوابق ثبت شده به تاریخ"))
         self.radioButton_viaDate.setText(_translate("MainWindow", "بازیابی به تاریخ"))
         self.lineEdit_dateDay.setToolTip(_translate("MainWindow", "روز"))

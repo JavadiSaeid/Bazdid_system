@@ -59,7 +59,7 @@ class Bazdid():
         self.ui.action_about.triggered.connect(self.RunAbout)
         self.ui.action_backup.triggered.connect(self.dbTOxlsx)
         self.ui.pushButton_print.clicked.connect(self.handlePreview)
-        # self.ui.pushButton_getExcel.clicked.connect(self.ResultToExcel)
+        self.ui.pushButton_getExcel.clicked.connect(self.ResultToExcel)
         # self.MainWindow.setWindowFlags(Qt.WindowStaysOnTopHint)
         self.ui.action_help.setEnabled(False)
         self.ui.action_ChangPassword.setEnabled(False)
@@ -124,6 +124,8 @@ class Bazdid():
                 for n in curser3:
                     self.ui.comboBox_noeAnjamKar.addItem("")
                     self.ui.comboBox_noeAnjamKar.setItemText(r, n[0])
+                    self.ui.comboBox_searchDoWork.addItem("")
+                    self.ui.comboBox_searchDoWork.setItemText(r+1, n[0])
                     r += 1
         except:
             try:
@@ -144,11 +146,14 @@ class Bazdid():
                 for d in dw3:
                     self.ui.comboBox_noeAnjamKar.addItem("")
                     self.ui.comboBox_noeAnjamKar.setItemText(r, d)
+                    self.ui.comboBox_searchDoWork.addItem("")
+                    self.ui.comboBox_searchDoWork.setItemText(r+1, d)
                     r += 1
             except:
                 self.ui.comboBox_naghshebardar.setEditable(True)
                 self.ui.comboBox_namaiande.setEditable(True)
                 self.ui.comboBox_noeAnjamKar.setEditable(True)
+                self.ui.comboBox_searchDoWork.setEditable(True)
                 self.errorM("خطا در خواندن لیست نام همکاران از دیتابیس!")
 
     def RunAbout(self):
@@ -193,11 +198,14 @@ class Bazdid():
             self.ui.lineEdit_dateYear.setEnabled(True)
             self.ui.checkBox_nextDays.setEnabled(True)
             self.ui.lineEdit_sangAsli_2.setEnabled(False)
+            self.ui.comboBox_searchDoWork.setEnabled(False)
             self.ui.lineEdit_sangAsli_2.setText('')
             self.ui.lineEdit_sangFari_2.setEnabled(False)
             self.ui.lineEdit_sangFari_2.setText('')
             # self.ui.radioButton_viaName.setEnabled(False)
             self.ui.lineEdit_moteqazi_2.setEnabled(False)
+        elif not (self.ui.radioButton_viaDate.isChecked() and self.ui.radioButton_viaName.isChecked()):
+            self.ui.comboBox_searchDoWork.setEnabled(True)
         else:
             self.ui.lineEdit_dateDay.setEnabled(False)
             self.ui.lineEdit_dateMonth.setEnabled(False)
@@ -213,11 +221,14 @@ class Bazdid():
             self.ui.lineEdit_dateDay.setEnabled(False)
             self.ui.lineEdit_dateMonth.setEnabled(False)
             self.ui.lineEdit_dateYear.setEnabled(False)
+            self.ui.comboBox_searchDoWork.setEnabled(False)
             self.ui.lineEdit_sangAsli_2.setEnabled(False)
             self.ui.lineEdit_sangFari_2.setEnabled(False)
             # self.ui.radioButton_viaDate.setEnabled(False)
             self.ui.lineEdit_sangAsli_2.setText('')
             self.ui.lineEdit_sangFari_2.setText('')
+        elif not (self.ui.radioButton_viaDate.isChecked() and self.ui.radioButton_viaName.isChecked()):
+            self.ui.comboBox_searchDoWork.setEnabled(True)
         else:
             self.ui.lineEdit_moteqazi_2.setText('')
             self.ui.lineEdit_moteqazi_2.setEnabled(False)
@@ -288,6 +299,7 @@ class Bazdid():
     def searcherVariable(self):
         self.sangAsli_2 = self.ui.lineEdit_sangAsli_2.text()
         self.sangFari_2 = self.ui.lineEdit_sangFari_2.text()
+        self.DW = self.ui.comboBox_searchDoWork.currentText()
 
     def dbToTableView(self,commandSQL):
         try:
@@ -358,11 +370,20 @@ class Bazdid():
                 self.enPrint()
         else:
             if self.sangAsli_2 == '' and self.sangFari_2 == '':
-                self.dbToTableView(
-                    commandSQL="SELECT pl, ml, dw, tb, sb, nb, nm, sd, tt FROM BAZDID_DATE")
-                if self.rowCount > 0:
-                    self.TableTitr = f" لیست تاریخچه سوابق ثبت شده موجود تا تاریخ {Ts} - {Tr} "
-                    self.enPrint()
+                if self.DW == 'همه موارد':
+                    self.dbToTableView(
+                        commandSQL="SELECT pl, ml, dw, tb, sb, nb, nm, sd, tt FROM BAZDID_DATE")
+                    if self.rowCount > 0:
+                        self.TableTitr = f" لیست تاریخچه سوابق ثبت شده موجود تا تاریخ {Ts} - {Tr} "
+                        self.enPrint()
+                        self.SQL_C = "SELECT pl, ml, dw, tb, sb, nb, nm, sd, tt FROM BAZDID_DATE"
+                else:
+                    self.dbToTableView(
+                        commandSQL="SELECT pl, ml, dw, tb, sb, nb, nm, sd, tt FROM BAZDID_DATE WHERE dw='{}'".format(self.DW))
+                    if self.rowCount > 0:
+                        self.TableTitr = f" لیست تاریخچه سوابق ثبت شده موجود تا تاریخ {Ts} - {Tr} "
+                        self.enPrint()
+                        self.SQL_C="SELECT pl, ml, dw, tb, sb, nb, nm, sd, tt FROM BAZDID_DATE WHERE dw='{}'".format(self.DW)
             elif self.sangAsli_2 != '' and self.sangFari_2 != '' :
                 self.dbToTableView(
                     commandSQL="SELECT pl, ml, dw, tb, sb, nb, nm, sd, tt FROM BAZDID_DATE WHERE  pl='{}' ".format(pl))
@@ -378,8 +399,12 @@ class Bazdid():
         self.ui.pushButton_print.setEnabled(True)
         self.ui.pushButton_getExcel.setEnabled(True)
 
-    def dbTOxlsx(self):
+    def ResultToExcel(self):
+        self.dbTOxlsx(sql_c=self.SQL_C)
+    def dbTOxlsx(self, sql_c = 0):
         try:
+            if sql_c == 0:
+                sqlC = "select id, pl, ml, dw, tb, sb, nb, nm, sd, tt from BAZDID_DATE"
             DeskTop = os.path.join(os.path.join(os.environ['USERPROFILE']), 'Desktop')
             if not os.path.isdir(f'{DeskTop}/Backup'):
                 os.mkdir(f'{DeskTop}/Backup')
@@ -397,8 +422,8 @@ class Bazdid():
             worksheet.set_zoom(110)
             with sqlite3.connect(self.dbPath) as conn:
                 c = conn.cursor()
-                c.execute("select id, pl, ml, dw, tb, sb, nb, nm, sd, tt from BAZDID_DATE")
-                mysel = c.execute("select id, pl, ml, dw, tb, sb, nb, nm, sd, tt from BAZDID_DATE ")
+                c.execute(sqlC)
+                mysel = c.execute(sqlC)
                 headers = ['ردیف', 'پلاک', 'متقاضی', 'نوع انجام کار', 'تاریخ بازدید', 'ساعت بازدید', 'نقشه بردار',
                            'نماینده', 'تاریخ ثبت', 'توضیحات']
                 for i, title in enumerate(headers):
@@ -486,6 +511,7 @@ class Bazdid():
         # SotonFormat.setBackground(QColor('#EEF9C9'))
         cursor.insertText(self.TableTitr+"\n", TitrFormat)
         model = self.ui.tableView_result.model()
+        print(model)
         table = cursor.insertTable(model.rowCount()+1, model.columnCount(), tableFormat)
         headers = ['پلاک', 'متقاضی','نوع انجام کار', 'تاریخ بازدید', 'ساعت بازدید', 'نقشه بردار','نماینده','تاریخ ثبت', 'توضیحات']
         self.tableResult.insertRows(10,10)

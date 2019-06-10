@@ -14,7 +14,7 @@
    <string>تعیین وقت بازدید ثبت ماسال</string>
   </property>
   <property name="windowIcon">
-   <iconset>
+   <iconset resource="icon.qrc">
     <normaloff>:/QIcon/Backup/iconn.png</normaloff>:/QIcon/Backup/iconn.png</iconset>
   </property>
   <property name="layoutDirection">
@@ -1387,6 +1387,11 @@ border-radius: 3px;
                       <height>0</height>
                      </size>
                     </property>
+                    <item>
+                     <property name="text">
+                      <string>همه موارد</string>
+                     </property>
+                    </item>
                    </widget>
                   </item>
                   <item>
@@ -2243,7 +2248,7 @@ border-radius: 10px;
      <x>0</x>
      <y>0</y>
      <width>630</width>
-     <height>20</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu">
