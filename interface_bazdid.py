@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'Bazdid.ui'
 #
-# Created by: PyQt5 UI code generator 5.12.2
+# Created by: PyQt5 UI code generator 5.12.1
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -558,6 +558,13 @@ class Ui_MainWindow(object):
         sizePolicy.setHeightForWidth(self.comboBox_searchDoWork.sizePolicy().hasHeightForWidth())
         self.comboBox_searchDoWork.setSizePolicy(sizePolicy)
         self.comboBox_searchDoWork.setMinimumSize(QtCore.QSize(200, 0))
+        self.comboBox_searchDoWork.setStyleSheet("QComboBox{\n"
+"background-color: #eee1c5   ;\n"
+"font: 75 10pt \"A Arsoo\" ;\n"
+"color:  #000fff ;\n"
+"border: 1px solid #096578  ;\n"
+"border-radius: 3px;\n"
+"}")
         self.comboBox_searchDoWork.setObjectName("comboBox_searchDoWork")
         self.comboBox_searchDoWork.addItem("")
         self.horizontalLayout_7.addWidget(self.comboBox_searchDoWork)
@@ -859,7 +866,7 @@ class Ui_MainWindow(object):
         self.gridLayout.addWidget(self.tabWidget, 0, 1, 1, 1)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 630, 21))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 630, 20))
         self.menubar.setObjectName("menubar")
         self.menu = QtWidgets.QMenu(self.menubar)
         self.menu.setObjectName("menu")

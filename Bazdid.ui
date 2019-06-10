@@ -14,7 +14,7 @@
    <string>تعیین وقت بازدید ثبت ماسال</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="icon.qrc">
+   <iconset>
     <normaloff>:/QIcon/Backup/iconn.png</normaloff>:/QIcon/Backup/iconn.png</iconset>
   </property>
   <property name="layoutDirection">
@@ -1387,6 +1387,15 @@ border-radius: 3px;
                       <height>0</height>
                      </size>
                     </property>
+                    <property name="styleSheet">
+                     <string notr="true">QComboBox{
+background-color: #eee1c5   ;
+font: 75 10pt &quot;A Arsoo&quot; ;
+color:  #000fff ;
+border: 1px solid #096578  ;
+border-radius: 3px;
+}</string>
+                    </property>
                     <item>
                      <property name="text">
                       <string>همه موارد</string>
@@ -2248,7 +2257,7 @@ border-radius: 10px;
      <x>0</x>
      <y>0</y>
      <width>630</width>
-     <height>21</height>
+     <height>20</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu">

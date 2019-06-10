@@ -229,6 +229,7 @@ class Bazdid():
             self.ui.lineEdit_sangFari_2.setText('')
         elif not (self.ui.radioButton_viaDate.isChecked() and self.ui.radioButton_viaName.isChecked()):
             self.ui.comboBox_searchDoWork.setEnabled(True)
+            self.ui.lineEdit_moteqazi_2.setText('')
         else:
             self.ui.lineEdit_moteqazi_2.setText('')
             self.ui.lineEdit_moteqazi_2.setEnabled(False)
@@ -338,27 +339,38 @@ class Bazdid():
         self.searcherVariable()
         pl = self.sangAsli_2 + "/" + self.sangFari_2
         if self.ui.radioButton_viaDate.isChecked():
-            day   = self.ui.lineEdit_dateDay.text()
+            day = self.ui.lineEdit_dateDay.text()
             month = self.ui.lineEdit_dateMonth.text()
-            year  = self.ui.lineEdit_dateYear.text()
+            year = self.ui.lineEdit_dateYear.text()
             if (year and month and day) != '':
-                searchDate = str(int(year))+"/"+str(int(month))+"/"+str(int(day))
-                searchDate2 = str(int(year.replace('13', '')))+"/"+str(int(month))+"/"+str(int(day))
-                searchDate2_1 = str(int(year.replace('14', '')))+"/"+str(int(month))+"/"+str(int(day))
-                searchDate3 = str(int('13'+year))+"/"+str(int(month))+"/"+str(int(day))
-                searchDate4 = str(int('14'+year))+"/"+str(int(month))+"/"+str(int(day))
+                searchDate = str(int(year)) + "/" + str(int(month)) + "/" + str(int(day))
+                searchDate2 = str(int(year.replace('13', ''))) + "/" + str(int(month)) + "/" + str(int(day))
+                searchDate2_1 = str(int(year.replace('14', ''))) + "/" + str(int(month)) + "/" + str(int(day))
+                searchDate3 = str(int('13' + year)) + "/" + str(int(month)) + "/" + str(int(day))
+                searchDate4 = str(int('14' + year)) + "/" + str(int(month)) + "/" + str(int(day))
             else:
-                searchDate = year+"/"+month+"/"+day
-                searchDate2 = year.replace('13', '')+"/"+month+"/"+day
-            self.dbToTableView(
-                commandSQL="SELECT pl, ml, dw, tb, sb, nb, nm, sd, tt FROM BAZDID_DATE WHERE  (tb='{}' OR tb='{}' OR tb='{}') ".format(
-                    searchDate, searchDate2, searchDate2_1, searchDate3, searchDate4, searchDate2_1))
-            if self.rowCount <= 0:
-                self.ui.statusbar.showMessage(
-                    "برای تاریخ {} سابقه ای موجود نیست".format(searchDate))
-            else:
-                self.TableTitr = f" تمام سوابق ثبت شده موجود برای تاریخ  {searchDate} "
-                self.enPrint()
+                searchDate = year + "/" + month + "/" + day
+                searchDate2 = year.replace('13', '') + "/" + month + "/" + day
+            if not self.ui.checkBox_nextDays.isChecked():
+                self.dbToTableView(
+                    commandSQL="SELECT pl, ml, dw, tb, sb, nb, nm, sd, tt FROM BAZDID_DATE WHERE  (tb='{}' OR tb='{}' OR tb='{}' OR tb='{}' OR tb='{}') ".format(searchDate, searchDate2, searchDate2_1, searchDate3, searchDate4))
+                if self.rowCount <= 0:
+                    self.ui.statusbar.showMessage(
+                        "برای تاریخ {} سابقه ای موجود نیست".format(searchDate))
+                else:
+                    self.TableTitr = f" تمام سوابق ثبت شده موجود برای تاریخ  {searchDate} "
+                    self.enPrint()
+                    self.SQL_C = "SELECT id, pl, ml, dw, tb, sb, nb, nm, sd, tt FROM BAZDID_DATE WHERE  (tb='{}' OR tb='{}' OR tb='{}' OR tb='{}' OR tb='{}') ".format(searchDate, searchDate2, searchDate2_1, searchDate3, searchDate4)
+            else:       ## NOW
+                self.dbToTableView(
+                    commandSQL="SELECT pl, ml, dw, tb, sb, nb, nm, sd, tt FROM BAZDID_DATE WHERE  (tb >'{}' OR tb >'{}' OR tb >'{}' OR tb >'{}' OR tb >'{}') ".format(searchDate, searchDate2, searchDate2_1, searchDate3, searchDate4))
+                if self.rowCount <= 0:
+                    self.ui.statusbar.showMessage(
+                        "برای تاریخ {} سابقه ای موجود نیست".format(searchDate))
+                else:
+                    self.TableTitr = f" تمام سوابق ثبت شده موجود برای تاریخ  {searchDate} "
+                    self.enPrint()
+                    self.SQL_C = "SELECT id, pl, ml, dw, tb, sb, nb, nm, sd, tt FROM BAZDID_DATE WHERE  (tb='{}' OR tb='{}' OR tb='{}' OR tb='{}' OR tb='{}') ".format(searchDate, searchDate2, searchDate2_1, searchDate3, searchDate4)
         elif self.ui.radioButton_viaName.isChecked():
             name = self.ui.lineEdit_moteqazi_2.text()
             self.dbToTableView(commandSQL="SELECT pl, ml, dw, tb, sb, nb, nm, sd, tt FROM BAZDID_DATE WHERE  ml LIKE  '%{}%' ".format(name))
@@ -368,6 +380,7 @@ class Bazdid():
             else:
                 self.TableTitr = f" تمام سوابق ثبت شده موجود برای نام  {name} "
                 self.enPrint()
+                self.SQL_C = "SELECT id, pl, ml, dw, tb, sb, nb, nm, sd, tt FROM BAZDID_DATE WHERE  ml LIKE  '%{}%' ".format(name)
         else:
             if self.sangAsli_2 == '' and self.sangFari_2 == '':
                 if self.DW == 'همه موارد':
@@ -375,21 +388,22 @@ class Bazdid():
                         commandSQL="SELECT pl, ml, dw, tb, sb, nb, nm, sd, tt FROM BAZDID_DATE")
                     if self.rowCount > 0:
                         self.TableTitr = f" لیست تاریخچه سوابق ثبت شده موجود تا تاریخ {Ts} - {Tr} "
+                        self.SQL_C = "SELECT id, pl, ml, dw, tb, sb, nb, nm, sd, tt FROM BAZDID_DATE"
                         self.enPrint()
-                        self.SQL_C = "SELECT pl, ml, dw, tb, sb, nb, nm, sd, tt FROM BAZDID_DATE"
                 else:
                     self.dbToTableView(
                         commandSQL="SELECT pl, ml, dw, tb, sb, nb, nm, sd, tt FROM BAZDID_DATE WHERE dw='{}'".format(self.DW))
                     if self.rowCount > 0:
                         self.TableTitr = f" لیست تاریخچه سوابق ثبت شده موجود تا تاریخ {Ts} - {Tr} "
                         self.enPrint()
-                        self.SQL_C="SELECT pl, ml, dw, tb, sb, nb, nm, sd, tt FROM BAZDID_DATE WHERE dw='{}'".format(self.DW)
+                        self.SQL_C="SELECT id, pl, ml, dw, tb, sb, nb, nm, sd, tt FROM BAZDID_DATE WHERE dw='{}'".format(self.DW)
             elif self.sangAsli_2 != '' and self.sangFari_2 != '' :
                 self.dbToTableView(
                     commandSQL="SELECT pl, ml, dw, tb, sb, nb, nm, sd, tt FROM BAZDID_DATE WHERE  pl='{}' ".format(pl))
                 if self.rowCount > 0:
                     self.TableTitr = f" لیست تاریخچه سوابق ثبت شده موجود پلاک {pl} تا تاریخ {Ts} - {Tr} "
                     self.enPrint()
+                    self.SQL_C = "SELECT id, pl, ml, dw, tb, sb, nb, nm, sd, tt FROM BAZDID_DATE WHERE  pl='{}' ".format(pl)
                 else:
                     self.ui.statusbar.showMessage("برای پلاک {} سابقه ای موجود نیست".format(pl))
             else:
@@ -400,16 +414,27 @@ class Bazdid():
         self.ui.pushButton_getExcel.setEnabled(True)
 
     def ResultToExcel(self):
-        self.dbTOxlsx(sql_c=self.SQL_C)
-    def dbTOxlsx(self, sql_c = 0):
+        self.dbTOxlsx(sql_c=self.SQL_C, FilePath=1, errorTEXT="فایل گزارش با موفقیت ایجاد شد.")
+
+    def dbTOxlsx(self, sql_c=0, FilePath=0, errorTEXT = "پشتیبان گیری از دیتابیس با موفقیت انجام شد."):
         try:
             if sql_c == 0:
                 sqlC = "select id, pl, ml, dw, tb, sb, nb, nm, sd, tt from BAZDID_DATE"
+            else:
+                sqlC = sql_c
+
             DeskTop = os.path.join(os.path.join(os.environ['USERPROFILE']), 'Desktop')
-            if not os.path.isdir(f'{DeskTop}/Backup'):
-                os.mkdir(f'{DeskTop}/Backup')
-            Tr = self.TimeSabt.strftime("%Y%m%d%H%M")
-            workbook = Workbook('{}/Backup/BackupBazdid_{}.xlsx'.format(DeskTop, Tr))
+            self.dateTime()
+            Tr = self.TimeSabt.strftime("%Y%m%d-%H%M")
+
+            if FilePath==0:
+                if not os.path.isdir(f'{DeskTop}/Backup'):
+                    os.mkdir(f'{DeskTop}/Backup')
+                workbook = Workbook('{}/Backup/BackupBazdid_{}.xlsx'.format(DeskTop, Tr))
+            else:
+                if not os.path.isdir(f'{DeskTop}/Gozaresh-Bazdid'):
+                    os.mkdir(f'{DeskTop}/Gozaresh-Bazdid')
+                workbook = Workbook('{}/Gozaresh-Bazdid/Gozaresh_{}.xlsx'.format(DeskTop, Tr))
             worksheet = workbook.add_worksheet()
             worksheet.right_to_left()
             header_format = workbook.add_format({'bold': True,
@@ -437,13 +462,17 @@ class Bazdid():
                             fg_format = workbook.add_format({'fg_color': '#C7F2F9',  'align': 'center'})
                         worksheet.write(i + 1, j, value, fg_format)
                 workbook.close()
-                self.errorM(errorText="پشتیبان گیری از دیتابیس با موفقیت انجام شد.", icon='Information')
+                self.errorM(errorText=errorTEXT, icon='Information', colorf='blue')
         except:
             try:
-                if not os.path.isdir('./Backup'):
-                    os.mkdir('Backup')
-                Tr = self.TimeSabt.strftime("%Y%m%d%H%M")
-                workbook = Workbook('Backup/BackupBazdid_{}.xlsx'.format(Tr))
+                if sql_c == 0:
+                    sqlC = "select id, pl, ml, dw, tb, sb, nb, nm, sd, tt from BAZDID_DATE"
+                else:
+                    sqlC = sql_c
+                if not os.path.isdir('./Gozaresh-Bazdid'):
+                    os.mkdir('Gozaresh-Bazdid')
+                Tr = self.TimeSabt.strftime("%Y%m%d-%H%M")
+                workbook = Workbook('Gozaresh-Bazdid/Gozaresh_{}.xlsx'.format(Tr))
                 worksheet = workbook.add_worksheet()
                 worksheet.right_to_left()
                 header_format = workbook.add_format({'bold': True,
@@ -456,8 +485,8 @@ class Bazdid():
                 worksheet.set_zoom(110)
                 with sqlite3.connect(self.dbPath) as conn:
                     c = conn.cursor()
-                    c.execute("select id, pl, ml, dw, tb, sb, nb, nm, sd, tt from BAZDID_DATE")
-                    mysel = c.execute("select id, pl, ml, dw, tb, sb, nb, nm, sd, tt from BAZDID_DATE ")
+                    c.execute(sqlC)
+                    mysel = c.execute(sqlC)
                     headers = ['ردیف', 'پلاک', 'متقاضی', 'نوع انجام کار', 'تاریخ بازدید', 'ساعت بازدید', 'نقشه بردار',
                                'نماینده', 'تاریخ ثبت', 'توضیحات']
                     for i, title in enumerate(headers):
@@ -471,7 +500,7 @@ class Bazdid():
                                 fg_format = workbook.add_format({'fg_color': '#C7F2F9', 'align': 'center'})
                             worksheet.write(i + 1, j, value, fg_format)
                     workbook.close()
-                    self.errorM(errorText="پشتیبان گیری از دیتابیس با موفقیت انجام شد.", icon='Information')
+                    self.errorM(errorText=errorTEXT, icon='Information', colorf='blue')
             except:
                 self.errorM("خطا در تهیه پشتیبان از دیتابیس برنامه!")
 
@@ -536,7 +565,7 @@ class Bazdid():
         self.ui.lineEdit_dateMonth_2.setText('')
         self.ui.lineEdit_hour.setText('')
 
-    def errorM(self,errorText='مشکلی پیش آمده است !!!', icon=''):
+    def errorM(self,errorText='مشکلی پیش آمده است !!!', icon='', colorf="#ff0000"):
         box = QMessageBox()
         if icon == '':
             box.setIcon(QMessageBox.Warning)
@@ -547,32 +576,32 @@ class Bazdid():
         box.setStandardButtons(QMessageBox.Yes)
         buttonY = box.button(QMessageBox.Yes)
         buttonY.setText('       تایید       ')
-        box.setStyleSheet("QMessageBox{\n"
-                          "background-color:    #d9c9a3    ;\n"
-                          "border: 3px solid   #ff0000  ;\n"
-                          "border-radius:5px;\n"
-                          "}\n"
-                          "QLabel{\n"
-                          "color:   #ff0000  ;\n"
-                          "font: 13pt \"A Arsoo\";\n"
-                          "font-weight: bold;\n"
-                          "border:no;\n"
-                          "}\n"
-                          "\n"
-                          "QPushButton:hover:!pressed\n"
-                          "{\n"
-                          "  border: 2px dashed rgb(255, 85, 255);\n"
-                          "    background-color:  #e4e7bb ;\n"
-                          "    color:  #9804ff ;\n"
-                          "}\n"
-                          "QPushButton{\n"
-                          "background-color:  #a2fdc1 ;\n"
-                          "font: 12pt \"A Arsoo\";\n"
-                          "font-weight: bold;\n"
-                          "    color:  #ff0000 ;\n"
-                          "border: 2px solid  #8b00ff ;\n"
-                          "border-radius: 8px;\n"
-                          "}")
+        box.setStyleSheet("""QMessageBox{\n
+                          background-color:    #d9c9a3    ;\n
+                          border: 3px solid   #ff0000  ;\n
+                          border-radius:5px;\n
+                          }\n
+                          QLabel{\n
+                          color:   %s  ;\n
+                          font: 13pt \"A Arsoo\";\n
+                          font-weight: bold;\n
+                          border:no;\n
+                          }\n
+                          \n
+                          QPushButton:hover:!pressed\n
+                          {\n
+                            border: 2px dashed rgb(255, 85, 255);\n
+                              background-color:  #e4e7bb ;\n
+                              color:  #9804ff ;\n
+                          }\n
+                          QPushButton{\n
+                          background-color:  #a2fdc1 ;\n
+                          font: 12pt \"A Arsoo\";\n
+                          font-weight: bold;\n
+                              color:  #ff0000 ;\n
+                          border: 2px solid  #8b00ff ;\n
+                          border-radius: 8px;\n
+                          }""" %colorf)
         box.setWindowFlags(box.windowFlags() | Qt.FramelessWindowHint | Qt.WindowStaysOnTopHint)
         box.exec_()
 
