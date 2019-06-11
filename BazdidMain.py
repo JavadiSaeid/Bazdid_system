@@ -347,101 +347,104 @@ class Bazdid():
         self.searcherVariable()
         pl = self.sangAsli_2 + "/" + self.sangFari_2
         if self.ui.radioButton_viaDate.isChecked():
-            day = self.ui.lineEdit_dateDay.text()
-            month = self.ui.lineEdit_dateMonth.text()
-            year = self.ui.lineEdit_dateYear.text()
-            if (year and month and day) != '':
-                searchDate = str(int(year)) + "/" + str(int(month)) + "/" + str(int(day))
-            #     searchDate2 = str(int(year.replace('13', ''))) + "/" + str(int(month)) + "/" + str(int(day))
-            #     searchDate2_1 = str(int(year.replace('14', ''))) + "/" + str(int(month)) + "/" + str(int(day))
-            #     searchDate3 = str(int('13' + year)) + "/" + str(int(month)) + "/" + str(int(day))
-            #     searchDate4 = str(int('14' + year)) + "/" + str(int(month)) + "/" + str(int(day))
-            #
-            #     searchDate_22 = str(int('13' +year)) + "/" + str(int('0' + month)) + "/" + str(int(day))
-            #     searchDate_23 = str(int(year)) + "/" + str(int('0' + month)) + "/" + str(int(day))
-            #     searchDate_24 = str(int('14' +year)) + "/" + str(int('0' + month)) + "/" + str(int(day))
-            #
-            #     searchDate_25= str(int('13' +year)) + "/" + str(int('0' + month)) + "/" + str(int('0'+day))
-            #     searchDate_26= str(int(year)) + "/" + str(int('0' + month)) + "/" + str(int('0'+day))
-            #     searchDate_27= str(int('14' +year)) + "/" + str(int('0' + month)) + "/" + str(int('0'+day))
-            #
-            #     searchDate_28= str(int('13' +year)) + "/" + str(int(month)) + "/" + str(int('0'+day))
-            #     searchDate_29= str(int(year)) + "/" + str(int(month)) + "/" + str(int('0'+day))
-            #     searchDate_30= str(int('14' +year)) + "/" + str(int(month)) + "/" + str(int('0'+day))
-            #
-            #     searchDate31 = str(int(year.replace('13', ''))) + "/" + str(int('0'+month)) + "/" + str(int(day))
-            #     searchDate32 = str(int(year.replace('13', ''))) + "/" + str(int('0'+month)) + "/" + str(int('0'+day))
-            #     searchDate33 = str(int(year.replace('13', ''))) + "/" + str(int(month)) + "/" + str(int('0'+day))
-            #
-            #     searchDate34 = str(int(year.replace('14', ''))) + "/" + str(int('0'+month)) + "/" + str(int(day))
-            #     searchDate35 = str(int(year.replace('14', ''))) + "/" + str(int('0'+month)) + "/" + str(int('0'+day))
-            #     searchDate36 = str(int(year.replace('14', ''))) + "/" + str(int(month)) + "/" + str(int('0'+day))
-            # else:
-            #     searchDate = year + "/" + month + "/" + day
-            #     searchDate2 = year.replace('13', '') + "/" + month + "/" + day
-                searchDate_1 = str(int(year)) + "/" + str(int(month)) + "/" + str(int(day))
-                searchDate_2 = str(int(year)) + "/" + str(int(month)) + "/" + str(int(day))
-                try:
-                    if len(year)<4:
-                        searchDate_1 = str(int('13' + year)) + "/" + str(int(month)) + "/" + str(int(day))
-                        searchDate_2 = str(int('14' + year)) + "/" + str(int(month)) + "/" + str(int(day))
-                    if len(month)<2:
-                        searchDate_1 = str(int(year)) + "/" + str(int('0'+month)) + "/" + str(int(day))
-                        searchDate_2 = str(int(year)) + "/" + str(int('0'+month)) + "/" + str(int(day))
-                    if len(day)<2:
-                        searchDate_1 = str(int(year)) + "/" + str(int(month)) + "/" + str(int('0'+day))
-                        searchDate_2 = str(int(year)) + "/" + str(int(month)) + "/" + str(int('0'+day))
-                    tbo_1 = str(dt.strptime(searchDate_1, '%Y/%m/%d'))
-                    tbo_2 = str(dt.strptime(searchDate_2, '%Y/%m/%d'))
-                except:
-                    if len(year)<4:
-                        searchDate_1 = str(int('13' + year)) + "/" + str(int(month)) + "/" + str(int(day))
-                        searchDate_2 = str(int('14' + year)) + "/" + str(int(month)) + "/" + str(int(day))
-                    tbo_1 = str(dt.strptime(searchDate_1, '%Y/%m/%d'))
-                    tbo_2 = str(dt.strptime(searchDate_2, '%Y/%m/%d'))
-            if not self.ui.checkBox_nextDays.isChecked():
-                self.dbToTableView(
-                    commandSQL="SELECT pl, ml, dw, tb, sb, nb, nm, sd, tt FROM BAZDID_DATE WHERE  (tbo = '{}' OR tbo = '{}' ) ".format(tbo_1, tbo_2))
-                # self.dbToTableView(
-                    # commandSQL="SELECT pl, ml, dw, tb, sb, nb, nm, sd, tt FROM BAZDID_DATE WHERE  (tb='{}' OR tb='{}' OR tb='{}' OR tb='{}' OR tb='{}' OR tb='{}' OR tb='{}' OR tb='{}' OR tb='{}' OR tb='{}' OR tb='{}' OR tb='{}' OR tb='{}' OR tb='{}' OR tb='{}' OR tb='{}' OR tb='{}' OR tb='{}' OR tb='{}' OR tb='{}') "
-                    #            "".format(searchDate, searchDate2, searchDate2_1, searchDate3, searchDate4,searchDate_22,searchDate_23,searchDate_24,searchDate_25,searchDate_26,searchDate_27,searchDate_28,searchDate_29,searchDate_30,searchDate31,searchDate32,searchDate33,searchDate34,searchDate35,searchDate36))
-                if self.rowCount <= 0:
-                    self.ui.statusbar.showMessage(
-                        "برای تاریخ {} سابقه ای موجود نیست".format(searchDate_1))
+            try:
+                day = self.ui.lineEdit_dateDay.text()
+                month = self.ui.lineEdit_dateMonth.text()
+                year = self.ui.lineEdit_dateYear.text()
+                if (year and month and day) != '':
+                    searchDate = str(int(year)) + "/" + str(int(month)) + "/" + str(int(day))
+                #     searchDate2 = str(int(year.replace('13', ''))) + "/" + str(int(month)) + "/" + str(int(day))
+                #     searchDate2_1 = str(int(year.replace('14', ''))) + "/" + str(int(month)) + "/" + str(int(day))
+                #     searchDate3 = str(int('13' + year)) + "/" + str(int(month)) + "/" + str(int(day))
+                #     searchDate4 = str(int('14' + year)) + "/" + str(int(month)) + "/" + str(int(day))
+                #
+                #     searchDate_22 = str(int('13' +year)) + "/" + str(int('0' + month)) + "/" + str(int(day))
+                #     searchDate_23 = str(int(year)) + "/" + str(int('0' + month)) + "/" + str(int(day))
+                #     searchDate_24 = str(int('14' +year)) + "/" + str(int('0' + month)) + "/" + str(int(day))
+                #
+                #     searchDate_25= str(int('13' +year)) + "/" + str(int('0' + month)) + "/" + str(int('0'+day))
+                #     searchDate_26= str(int(year)) + "/" + str(int('0' + month)) + "/" + str(int('0'+day))
+                #     searchDate_27= str(int('14' +year)) + "/" + str(int('0' + month)) + "/" + str(int('0'+day))
+                #
+                #     searchDate_28= str(int('13' +year)) + "/" + str(int(month)) + "/" + str(int('0'+day))
+                #     searchDate_29= str(int(year)) + "/" + str(int(month)) + "/" + str(int('0'+day))
+                #     searchDate_30= str(int('14' +year)) + "/" + str(int(month)) + "/" + str(int('0'+day))
+                #
+                #     searchDate31 = str(int(year.replace('13', ''))) + "/" + str(int('0'+month)) + "/" + str(int(day))
+                #     searchDate32 = str(int(year.replace('13', ''))) + "/" + str(int('0'+month)) + "/" + str(int('0'+day))
+                #     searchDate33 = str(int(year.replace('13', ''))) + "/" + str(int(month)) + "/" + str(int('0'+day))
+                #
+                #     searchDate34 = str(int(year.replace('14', ''))) + "/" + str(int('0'+month)) + "/" + str(int(day))
+                #     searchDate35 = str(int(year.replace('14', ''))) + "/" + str(int('0'+month)) + "/" + str(int('0'+day))
+                #     searchDate36 = str(int(year.replace('14', ''))) + "/" + str(int(month)) + "/" + str(int('0'+day))
+                # else:
+                #     searchDate = year + "/" + month + "/" + day
+                #     searchDate2 = year.replace('13', '') + "/" + month + "/" + day
+                    searchDate_1 = str(int(year)) + "/" + str(int(month)) + "/" + str(int(day))
+                    searchDate_2 = str(int(year)) + "/" + str(int(month)) + "/" + str(int(day))
+                    try:
+                        if len(year)<4:
+                            searchDate_1 = str(int('13' + year)) + "/" + str(int(month)) + "/" + str(int(day))
+                            searchDate_2 = str(int('14' + year)) + "/" + str(int(month)) + "/" + str(int(day))
+                        if len(month)<2:
+                            searchDate_1 = str(int(year)) + "/" + str(int('0'+month)) + "/" + str(int(day))
+                            searchDate_2 = str(int(year)) + "/" + str(int('0'+month)) + "/" + str(int(day))
+                        if len(day)<2:
+                            searchDate_1 = str(int(year)) + "/" + str(int(month)) + "/" + str(int('0'+day))
+                            searchDate_2 = str(int(year)) + "/" + str(int(month)) + "/" + str(int('0'+day))
+                        tbo_1 = str(dt.strptime(searchDate_1, '%Y/%m/%d'))
+                        tbo_2 = str(dt.strptime(searchDate_2, '%Y/%m/%d'))
+                    except:
+                        if len(year)<4:
+                            searchDate_1 = str(int('13' + year)) + "/" + str(int(month)) + "/" + str(int(day))
+                            searchDate_2 = str(int('14' + year)) + "/" + str(int(month)) + "/" + str(int(day))
+                        tbo_1 = str(dt.strptime(searchDate_1, '%Y/%m/%d'))
+                        tbo_2 = str(dt.strptime(searchDate_2, '%Y/%m/%d'))
+                if not self.ui.checkBox_nextDays.isChecked():
+                    self.dbToTableView(
+                        commandSQL="SELECT pl, ml, dw, tb, sb, nb, nm, sd, tt FROM BAZDID_DATE WHERE  (tbo = '{}' OR tbo = '{}' ) ".format(tbo_1, tbo_2))
+                    # self.dbToTableView(
+                        # commandSQL="SELECT pl, ml, dw, tb, sb, nb, nm, sd, tt FROM BAZDID_DATE WHERE  (tb='{}' OR tb='{}' OR tb='{}' OR tb='{}' OR tb='{}' OR tb='{}' OR tb='{}' OR tb='{}' OR tb='{}' OR tb='{}' OR tb='{}' OR tb='{}' OR tb='{}' OR tb='{}' OR tb='{}' OR tb='{}' OR tb='{}' OR tb='{}' OR tb='{}' OR tb='{}') "
+                        #            "".format(searchDate, searchDate2, searchDate2_1, searchDate3, searchDate4,searchDate_22,searchDate_23,searchDate_24,searchDate_25,searchDate_26,searchDate_27,searchDate_28,searchDate_29,searchDate_30,searchDate31,searchDate32,searchDate33,searchDate34,searchDate35,searchDate36))
+                    if self.rowCount <= 0:
+                        self.ui.statusbar.showMessage(
+                            "برای تاریخ {} سابقه ای موجود نیست".format(searchDate_1))
+                    else:
+                        self.TableTitr = f" تمام سوابق ثبت شده موجود برای تاریخ  {searchDate_1} "
+                        self.enPrint()
+                        self.SQL_C = "SELECT pl, ml, dw, tb, sb, nb, nm, sd, tt FROM BAZDID_DATE WHERE  (tbo = '{}' OR tbo = '{}' ) ".format(tbo_1, tbo_2)
                 else:
-                    self.TableTitr = f" تمام سوابق ثبت شده موجود برای تاریخ  {searchDate_1} "
-                    self.enPrint()
-                    self.SQL_C = "SELECT pl, ml, dw, tb, sb, nb, nm, sd, tt FROM BAZDID_DATE WHERE  (tbo = '{}' OR tbo = '{}' ) ".format(tbo_1, tbo_2)
-            else:
-                searchDate_1 = str(int(year)) + "/" + str(int(month)) + "/" + str(int(day))
-                searchDate_2 = str(int(year)) + "/" + str(int(month)) + "/" + str(int(day))
-                try:
-                    if len(year)<4:
-                        searchDate_1 = str(int('13' + year)) + "/" + str(int(month)) + "/" + str(int(day))
-                        searchDate_2 = str(int('14' + year)) + "/" + str(int(month)) + "/" + str(int(day))
-                    if len(month)<2:
-                        searchDate_1 = str(int(year)) + "/" + str(int('0'+month)) + "/" + str(int(day))
-                        searchDate_2 = str(int(year)) + "/" + str(int('0'+month)) + "/" + str(int(day))
-                    if len(day)<2:
-                        searchDate_1 = str(int(year)) + "/" + str(int(month)) + "/" + str(int('0'+day))
-                        searchDate_2 = str(int(year)) + "/" + str(int(month)) + "/" + str(int('0'+day))
-                    tbo_1 = str(dt.strptime(searchDate_1, '%Y/%m/%d'))
-                    tbo_2 = str(dt.strptime(searchDate_2, '%Y/%m/%d'))
-                except:
-                    if len(year)<4:
-                        searchDate_1 = str(int('13' + year)) + "/" + str(int(month)) + "/" + str(int(day))
-                        searchDate_2 = str(int('14' + year)) + "/" + str(int(month)) + "/" + str(int(day))
-                    tbo_1 = str(dt.strptime(searchDate_1, '%Y/%m/%d'))
-                    tbo_2 = str(dt.strptime(searchDate_2, '%Y/%m/%d'))
-                self.dbToTableView(
-                    commandSQL="SELECT pl, ml, dw, tb, sb, nb, nm, sd, tt FROM BAZDID_DATE WHERE  (tbo >= '{}' OR tbo >= '{}' ) ".format(tbo_1, tbo_2))
-                if self.rowCount <= 0:
-                    self.ui.statusbar.showMessage(
-                        "برای تاریخ {} سابقه ای موجود نیست".format(searchDate_1))
-                else:
-                    self.TableTitr = f" تمام سوابق ثبت شده موجود برای تاریخ  {searchDate_1} "
-                    self.enPrint()
-                    self.SQL_C = "SELECT id, pl, ml, dw, tb, sb, nb, nm, sd, tt FROM BAZDID_DATE WHERE  (tbo >= '{}' OR tbo >= '{}' ) ".format(tbo_1, tbo_2)
+                    searchDate_1 = str(int(year)) + "/" + str(int(month)) + "/" + str(int(day))
+                    searchDate_2 = str(int(year)) + "/" + str(int(month)) + "/" + str(int(day))
+                    try:
+                        if len(year)<4:
+                            searchDate_1 = str(int('13' + year)) + "/" + str(int(month)) + "/" + str(int(day))
+                            searchDate_2 = str(int('14' + year)) + "/" + str(int(month)) + "/" + str(int(day))
+                        if len(month)<2:
+                            searchDate_1 = str(int(year)) + "/" + str(int('0'+month)) + "/" + str(int(day))
+                            searchDate_2 = str(int(year)) + "/" + str(int('0'+month)) + "/" + str(int(day))
+                        if len(day)<2:
+                            searchDate_1 = str(int(year)) + "/" + str(int(month)) + "/" + str(int('0'+day))
+                            searchDate_2 = str(int(year)) + "/" + str(int(month)) + "/" + str(int('0'+day))
+                        tbo_1 = str(dt.strptime(searchDate_1, '%Y/%m/%d'))
+                        tbo_2 = str(dt.strptime(searchDate_2, '%Y/%m/%d'))
+                    except:
+                        if len(year)<4:
+                            searchDate_1 = str(int('13' + year)) + "/" + str(int(month)) + "/" + str(int(day))
+                            searchDate_2 = str(int('14' + year)) + "/" + str(int(month)) + "/" + str(int(day))
+                        tbo_1 = str(dt.strptime(searchDate_1, '%Y/%m/%d'))
+                        tbo_2 = str(dt.strptime(searchDate_2, '%Y/%m/%d'))
+                    self.dbToTableView(
+                        commandSQL="SELECT pl, ml, dw, tb, sb, nb, nm, sd, tt FROM BAZDID_DATE WHERE  (tbo >= '{}' OR tbo >= '{}' ) ".format(tbo_1, tbo_2))
+                    if self.rowCount <= 0:
+                        self.ui.statusbar.showMessage(
+                            "برای تاریخ {} سابقه ای موجود نیست".format(searchDate_1))
+                    else:
+                        self.TableTitr = f" تمام سوابق ثبت شده موجود برای تاریخ  {searchDate_1} "
+                        self.enPrint()
+                        self.SQL_C = "SELECT pl, ml, dw, tb, sb, nb, nm, sd, tt FROM BAZDID_DATE WHERE  (tbo >= '{}' OR tbo >= '{}' ) ".format(tbo_1, tbo_2)
+            except:
+                self.errorM(errorText="خطا در خواندن اطلاعات!\n لطفا در صحت ثبت تاریخ در فیلدها دقت کنید.")
         elif self.ui.radioButton_viaName.isChecked():
             name = self.ui.lineEdit_moteqazi_2.text()
             self.dbToTableView(commandSQL="SELECT pl, ml, dw, tb, sb, nb, nm, sd, tt FROM BAZDID_DATE WHERE  ml LIKE  '%{}%' ".format(name))
@@ -451,7 +454,7 @@ class Bazdid():
             else:
                 self.TableTitr = f" تمام سوابق ثبت شده موجود برای نام  {name} "
                 self.enPrint()
-                self.SQL_C = "SELECT id, pl, ml, dw, tb, sb, nb, nm, sd, tt FROM BAZDID_DATE WHERE  ml LIKE  '%{}%' ".format(name)
+                self.SQL_C = "SELECT pl, ml, dw, tb, sb, nb, nm, sd, tt FROM BAZDID_DATE WHERE  ml LIKE  '%{}%' ".format(name)
         else:
             if self.sangAsli_2 == '' and self.sangFari_2 == '':
                 if self.DW == 'همه موارد':
@@ -459,7 +462,7 @@ class Bazdid():
                         commandSQL="SELECT pl, ml, dw, tb, sb, nb, nm, sd, tt FROM BAZDID_DATE")
                     if self.rowCount > 0:
                         self.TableTitr = f" لیست تاریخچه سوابق ثبت شده موجود تا تاریخ {Ts} - {Tr} "
-                        self.SQL_C = "SELECT id, pl, ml, dw, tb, sb, nb, nm, sd, tt FROM BAZDID_DATE"
+                        self.SQL_C = "SELECT pl, ml, dw, tb, sb, nb, nm, sd, tt FROM BAZDID_DATE"
                         self.enPrint()
                 else:
                     self.dbToTableView(
@@ -467,14 +470,14 @@ class Bazdid():
                     if self.rowCount > 0:
                         self.TableTitr = f" لیست تاریخچه سوابق ثبت شده موجود تا تاریخ {Ts} - {Tr} "
                         self.enPrint()
-                        self.SQL_C="SELECT id, pl, ml, dw, tb, sb, nb, nm, sd, tt FROM BAZDID_DATE WHERE dw='{}'".format(self.DW)
+                        self.SQL_C="SELECT pl, ml, dw, tb, sb, nb, nm, sd, tt FROM BAZDID_DATE WHERE dw='{}'".format(self.DW)
             elif self.sangAsli_2 != '' and self.sangFari_2 != '' :
                 self.dbToTableView(
                     commandSQL="SELECT pl, ml, dw, tb, sb, nb, nm, sd, tt FROM BAZDID_DATE WHERE  pl='{}' ".format(pl))
                 if self.rowCount > 0:
                     self.TableTitr = f" لیست تاریخچه سوابق ثبت شده موجود پلاک {pl} تا تاریخ {Ts} - {Tr} "
                     self.enPrint()
-                    self.SQL_C = "SELECT id, pl, ml, dw, tb, sb, nb, nm, sd, tt FROM BAZDID_DATE WHERE  pl='{}' ".format(pl)
+                    self.SQL_C = "SELECT pl, ml, dw, tb, sb, nb, nm, sd, tt FROM BAZDID_DATE WHERE  pl='{}' ".format(pl)
                 else:
                     self.ui.statusbar.showMessage("برای پلاک {} سابقه ای موجود نیست".format(pl))
             else:
@@ -490,7 +493,7 @@ class Bazdid():
     def dbTOxlsx(self, sql_c=0, FilePath=0, errorTEXT = "پشتیبان گیری از دیتابیس با موفقیت انجام شد."):
         try:
             if sql_c == 0:
-                sqlC = "select id, pl, ml, dw, tb, sb, nb, nm, sd, tt from BAZDID_DATE"
+                sqlC = "select pl, ml, dw, tb, sb, nb, nm, sd, tt from BAZDID_DATE"
             else:
                 sqlC = sql_c
 
@@ -520,7 +523,7 @@ class Bazdid():
                 c = conn.cursor()
                 c.execute(sqlC)
                 mysel = c.execute(sqlC)
-                headers = ['ردیف', 'پلاک', 'متقاضی', 'نوع انجام کار', 'تاریخ بازدید', 'ساعت بازدید', 'نقشه بردار',
+                headers = ['پلاک', 'متقاضی', 'نوع انجام کار', 'تاریخ بازدید', 'ساعت بازدید', 'نقشه بردار',
                            'نماینده', 'تاریخ ثبت', 'توضیحات']
                 for i, title in enumerate(headers):
                     worksheet.write(0, i, title, header_format)
