@@ -198,14 +198,14 @@ class Bazdid():
             self.ui.lineEdit_dateYear.setEnabled(True)
             self.ui.checkBox_nextDays.setEnabled(True)
             self.ui.lineEdit_sangAsli_2.setEnabled(False)
-            self.ui.comboBox_searchDoWork.setEnabled(False)
+            # self.ui.comboBox_searchDoWork.setEnabled(False)
             self.ui.lineEdit_sangAsli_2.setText('')
             self.ui.lineEdit_sangFari_2.setEnabled(False)
             self.ui.lineEdit_sangFari_2.setText('')
             # self.ui.radioButton_viaName.setEnabled(False)
             self.ui.lineEdit_moteqazi_2.setEnabled(False)
-        elif not (self.ui.radioButton_viaDate.isChecked() and self.ui.radioButton_viaName.isChecked()):
-            self.ui.comboBox_searchDoWork.setEnabled(True)
+        # elif not (self.ui.radioButton_viaDate.isChecked() and self.ui.radioButton_viaName.isChecked()):
+        #     self.ui.comboBox_searchDoWork.setEnabled(True)
         else:
             self.ui.lineEdit_dateDay.setEnabled(False)
             self.ui.lineEdit_dateMonth.setEnabled(False)
@@ -221,15 +221,15 @@ class Bazdid():
             self.ui.lineEdit_dateDay.setEnabled(False)
             self.ui.lineEdit_dateMonth.setEnabled(False)
             self.ui.lineEdit_dateYear.setEnabled(False)
-            self.ui.comboBox_searchDoWork.setEnabled(False)
+            # self.ui.comboBox_searchDoWork.setEnabled(False)
             self.ui.lineEdit_sangAsli_2.setEnabled(False)
             self.ui.lineEdit_sangFari_2.setEnabled(False)
             # self.ui.radioButton_viaDate.setEnabled(False)
             self.ui.lineEdit_sangAsli_2.setText('')
             self.ui.lineEdit_sangFari_2.setText('')
-        elif not (self.ui.radioButton_viaDate.isChecked() and self.ui.radioButton_viaName.isChecked()):
-            self.ui.comboBox_searchDoWork.setEnabled(True)
-            self.ui.lineEdit_moteqazi_2.setText('')
+        # elif not (self.ui.radioButton_viaDate.isChecked() and self.ui.radioButton_viaName.isChecked()):
+        #     self.ui.comboBox_searchDoWork.setEnabled(True)
+        #     self.ui.lineEdit_moteqazi_2.setText('')
         else:
             self.ui.lineEdit_moteqazi_2.setText('')
             self.ui.lineEdit_moteqazi_2.setEnabled(False)
@@ -346,6 +346,10 @@ class Bazdid():
         self.ui.pushButton_getExcel.setEnabled(False)
         self.searcherVariable()
         pl = self.sangAsli_2 + "/" + self.sangFari_2
+        if self.DW == 'همه موارد':
+            DW_filter = '%%'
+        else:
+            DW_filter = self.DW
         if self.ui.radioButton_viaDate.isChecked():
             try:
                 day = self.ui.lineEdit_dateDay.text()
@@ -402,7 +406,7 @@ class Bazdid():
                         tbo_2 = str(dt.strptime(searchDate_2, '%Y/%m/%d'))
                 if not self.ui.checkBox_nextDays.isChecked():
                     self.dbToTableView(
-                        commandSQL="SELECT pl, ml, dw, tb, sb, nb, nm, sd, tt FROM BAZDID_DATE WHERE  (tbo = '{}' OR tbo = '{}' ) ".format(tbo_1, tbo_2))
+                        commandSQL="SELECT pl, ml, dw, tb, sb, nb, nm, sd, tt FROM BAZDID_DATE WHERE  (tbo = '{}' OR tbo = '{}') AND dw LIKE '{}' ".format(tbo_1, tbo_2, DW_filter))
                     # self.dbToTableView(
                         # commandSQL="SELECT pl, ml, dw, tb, sb, nb, nm, sd, tt FROM BAZDID_DATE WHERE  (tb='{}' OR tb='{}' OR tb='{}' OR tb='{}' OR tb='{}' OR tb='{}' OR tb='{}' OR tb='{}' OR tb='{}' OR tb='{}' OR tb='{}' OR tb='{}' OR tb='{}' OR tb='{}' OR tb='{}' OR tb='{}' OR tb='{}' OR tb='{}' OR tb='{}' OR tb='{}') "
                         #            "".format(searchDate, searchDate2, searchDate2_1, searchDate3, searchDate4,searchDate_22,searchDate_23,searchDate_24,searchDate_25,searchDate_26,searchDate_27,searchDate_28,searchDate_29,searchDate_30,searchDate31,searchDate32,searchDate33,searchDate34,searchDate35,searchDate36))
@@ -412,7 +416,7 @@ class Bazdid():
                     else:
                         self.TableTitr = f" تمام سوابق ثبت شده موجود برای تاریخ  {searchDate_1} "
                         self.enPrint()
-                        self.SQL_C = "SELECT pl, ml, dw, tb, sb, nb, nm, sd, tt FROM BAZDID_DATE WHERE  (tbo = '{}' OR tbo = '{}' ) ".format(tbo_1, tbo_2)
+                        self.SQL_C = "SELECT pl, ml, dw, tb, sb, nb, nm, sd, tt FROM BAZDID_DATE WHERE  (tbo = '{}' OR tbo = '{}') AND dw LIKE '{}'".format(tbo_1, tbo_2, DW_filter)
                 else:
                     searchDate_1 = str(int(year)) + "/" + str(int(month)) + "/" + str(int(day))
                     searchDate_2 = str(int(year)) + "/" + str(int(month)) + "/" + str(int(day))
@@ -435,26 +439,26 @@ class Bazdid():
                         tbo_1 = str(dt.strptime(searchDate_1, '%Y/%m/%d'))
                         tbo_2 = str(dt.strptime(searchDate_2, '%Y/%m/%d'))
                     self.dbToTableView(
-                        commandSQL="SELECT pl, ml, dw, tb, sb, nb, nm, sd, tt FROM BAZDID_DATE WHERE  (tbo >= '{}' OR tbo >= '{}' ) ".format(tbo_1, tbo_2))
+                        commandSQL="SELECT pl, ml, dw, tb, sb, nb, nm, sd, tt FROM BAZDID_DATE WHERE  (tbo >= '{}' OR tbo >= '{}' ) AND dw LIKE '{}' ".format(tbo_1, tbo_2, DW_filter))
                     if self.rowCount <= 0:
                         self.ui.statusbar.showMessage(
                             "برای تاریخ {} سابقه ای موجود نیست".format(searchDate_1))
                     else:
                         self.TableTitr = f" تمام سوابق ثبت شده موجود برای تاریخ  {searchDate_1} "
                         self.enPrint()
-                        self.SQL_C = "SELECT pl, ml, dw, tb, sb, nb, nm, sd, tt FROM BAZDID_DATE WHERE  (tbo >= '{}' OR tbo >= '{}' ) ".format(tbo_1, tbo_2)
+                        self.SQL_C = "SELECT pl, ml, dw, tb, sb, nb, nm, sd, tt FROM BAZDID_DATE WHERE  (tbo >= '{}' OR tbo >= '{}') AND dw LIKE '{}' ".format(tbo_1, tbo_2, DW_filter)
             except:
                 self.errorM(errorText="خطا در خواندن اطلاعات!\n لطفا در صحت ثبت تاریخ در فیلدها دقت کنید.")
         elif self.ui.radioButton_viaName.isChecked():
             name = self.ui.lineEdit_moteqazi_2.text()
-            self.dbToTableView(commandSQL="SELECT pl, ml, dw, tb, sb, nb, nm, sd, tt FROM BAZDID_DATE WHERE  ml LIKE  '%{}%' ".format(name))
+            self.dbToTableView(commandSQL="SELECT pl, ml, dw, tb, sb, nb, nm, sd, tt FROM BAZDID_DATE WHERE  (ml LIKE  '%{}%') AND (dw LIKE '{}') ".format(name, DW_filter))
             if self.rowCount <= 0:
                 self.ui.statusbar.showMessage(
                     "برای نام {} سابقه ای موجود نیست".format(name))
             else:
                 self.TableTitr = f" تمام سوابق ثبت شده موجود برای نام  {name} "
                 self.enPrint()
-                self.SQL_C = "SELECT pl, ml, dw, tb, sb, nb, nm, sd, tt FROM BAZDID_DATE WHERE  ml LIKE  '%{}%' ".format(name)
+                self.SQL_C = "SELECT pl, ml, dw, tb, sb, nb, nm, sd, tt FROM BAZDID_DATE WHERE  (ml LIKE  '%{}%') AND (dw LIKE '{}')".format(name, DW_filter)
         else:
             if self.sangAsli_2 == '' and self.sangFari_2 == '':
                 if self.DW == 'همه موارد':
@@ -517,7 +521,7 @@ class Bazdid():
                                                  'valign': 'vcenter',
                                                  'fg_color': '#D7E4BC',
                                                  'border': 1})
-            worksheet.set_column('A:J', 12)
+            worksheet.set_column('A:I', 12)
             worksheet.set_zoom(110)
             with sqlite3.connect(self.dbPath) as conn:
                 c = conn.cursor()
@@ -555,7 +559,7 @@ class Bazdid():
                                                      'valign': 'vcenter',
                                                      'fg_color': '#D7E4BC',
                                                      'border': 1})
-                worksheet.set_column('A:J', 12)
+                worksheet.set_column('A:I', 12)
                 worksheet.set_zoom(110)
                 with sqlite3.connect(self.dbPath) as conn:
                     c = conn.cursor()
