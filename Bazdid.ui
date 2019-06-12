@@ -636,7 +636,7 @@ border-radius:2px;
              <property name="styleSheet">
               <string notr="true">QLineEdit{
 background-color: rgba(0, 0, 0, 0);
-font: 75 12pt &quot;A Arghavan&quot;;
+font: 75 12pt  &quot;Titr&quot;;
 border-style: solid;
 border-bottom-width: 2px;
 }
@@ -737,25 +737,25 @@ border-radius: 3px;
                   </property>
                   <property name="minimumSize">
                    <size>
-                    <width>20</width>
+                    <width>25</width>
                     <height>20</height>
                    </size>
                   </property>
                   <property name="maximumSize">
                    <size>
-                    <width>20</width>
+                    <width>25</width>
                     <height>20</height>
                    </size>
                   </property>
                   <property name="sizeIncrement">
                    <size>
-                    <width>20</width>
+                    <width>25</width>
                     <height>20</height>
                    </size>
                   </property>
                   <property name="baseSize">
                    <size>
-                    <width>20</width>
+                    <width>25</width>
                     <height>20</height>
                    </size>
                   </property>
@@ -823,25 +823,25 @@ border-radius: 3px;
                   </property>
                   <property name="minimumSize">
                    <size>
-                    <width>20</width>
+                    <width>25</width>
                     <height>20</height>
                    </size>
                   </property>
                   <property name="maximumSize">
                    <size>
-                    <width>20</width>
+                    <width>25</width>
                     <height>20</height>
                    </size>
                   </property>
                   <property name="sizeIncrement">
                    <size>
-                    <width>20</width>
+                    <width>25</width>
                     <height>20</height>
                    </size>
                   </property>
                   <property name="baseSize">
                    <size>
-                    <width>20</width>
+                    <width>25</width>
                     <height>20</height>
                    </size>
                   </property>
@@ -921,13 +921,13 @@ border-radius: 3px;
                   </property>
                   <property name="minimumSize">
                    <size>
-                    <width>35</width>
+                    <width>40</width>
                     <height>20</height>
                    </size>
                   </property>
                   <property name="maximumSize">
                    <size>
-                    <width>35</width>
+                    <width>40</width>
                     <height>20</height>
                    </size>
                   </property>
@@ -1314,6 +1314,14 @@ border-right: 1px solid #fffff8;
                <height>120</height>
               </size>
              </property>
+             <property name="font">
+              <font>
+               <family>Tahoma</family>
+               <pointsize>10</pointsize>
+               <weight>75</weight>
+               <bold>true</bold>
+              </font>
+             </property>
              <property name="toolTip">
               <string>بازیابی پرونده های تعیین وقت شده به تاریخ</string>
              </property>
@@ -1323,13 +1331,11 @@ border-right: 1px solid #fffff8;
              <property name="styleSheet">
               <string notr="true">QLineEdit{
 background-color: rgba(0, 0, 0, 0);
-font: 75 12pt &quot;A Arghavan&quot;;
+font: 75 12pt  &quot;Titr&quot;;
 border-style: solid;
 border-bottom-width: 2px;
 }
-QCheckBox{
-font: 75 8pt &quot;A Arsoo&quot;;
-}
+
 QComboBox{
 background-color: #eee1c5   ;
 font: 75 10pt &quot;A Arsoo&quot;;
@@ -1485,25 +1491,25 @@ border-radius: 3px;
                       </property>
                       <property name="minimumSize">
                        <size>
-                        <width>20</width>
+                        <width>25</width>
                         <height>20</height>
                        </size>
                       </property>
                       <property name="maximumSize">
                        <size>
-                        <width>20</width>
+                        <width>25</width>
                         <height>20</height>
                        </size>
                       </property>
                       <property name="sizeIncrement">
                        <size>
-                        <width>20</width>
+                        <width>25</width>
                         <height>20</height>
                        </size>
                       </property>
                       <property name="baseSize">
                        <size>
-                        <width>20</width>
+                        <width>25</width>
                         <height>20</height>
                        </size>
                       </property>
@@ -1571,25 +1577,25 @@ border-radius: 3px;
                       </property>
                       <property name="minimumSize">
                        <size>
-                        <width>20</width>
+                        <width>25</width>
                         <height>20</height>
                        </size>
                       </property>
                       <property name="maximumSize">
                        <size>
-                        <width>20</width>
+                        <width>25</width>
                         <height>20</height>
                        </size>
                       </property>
                       <property name="sizeIncrement">
                        <size>
-                        <width>20</width>
+                        <width>25</width>
                         <height>20</height>
                        </size>
                       </property>
                       <property name="baseSize">
                        <size>
-                        <width>20</width>
+                        <width>25</width>
                         <height>20</height>
                        </size>
                       </property>
@@ -1669,25 +1675,25 @@ border-radius: 3px;
                       </property>
                       <property name="minimumSize">
                        <size>
-                        <width>35</width>
+                        <width>40</width>
                         <height>20</height>
                        </size>
                       </property>
                       <property name="maximumSize">
                        <size>
-                        <width>35</width>
+                        <width>40</width>
                         <height>20</height>
                        </size>
                       </property>
                       <property name="sizeIncrement">
                        <size>
-                        <width>35</width>
+                        <width>40</width>
                         <height>20</height>
                        </size>
                       </property>
                       <property name="baseSize">
                        <size>
-                        <width>35</width>
+                        <width>40</width>
                         <height>20</height>
                        </size>
                       </property>
@@ -1730,6 +1736,15 @@ border-radius: 3px;
                    <widget class="QCheckBox" name="checkBox_nextDays">
                     <property name="enabled">
                      <bool>false</bool>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <family>A Arsoo</family>
+                      <pointsize>12</pointsize>
+                      <weight>9</weight>
+                      <italic>false</italic>
+                      <bold>false</bold>
+                     </font>
                     </property>
                     <property name="text">
                      <string>به بعد</string>

@@ -254,7 +254,7 @@ class Ui_MainWindow(object):
         self.groupBox_3.setStatusTip("")
         self.groupBox_3.setStyleSheet("QLineEdit{\n"
 "background-color: rgba(0, 0, 0, 0);\n"
-"font: 75 12pt \"A Arghavan\";\n"
+"font: 75 12pt  \"Titr\";\n"
 "border-style: solid;\n"
 "border-bottom-width: 2px;\n"
 "}\n"
@@ -303,10 +303,10 @@ class Ui_MainWindow(object):
         sizePolicy.setVerticalStretch(1)
         sizePolicy.setHeightForWidth(self.lineEdit_dateDay_2.sizePolicy().hasHeightForWidth())
         self.lineEdit_dateDay_2.setSizePolicy(sizePolicy)
-        self.lineEdit_dateDay_2.setMinimumSize(QtCore.QSize(20, 20))
-        self.lineEdit_dateDay_2.setMaximumSize(QtCore.QSize(20, 20))
-        self.lineEdit_dateDay_2.setSizeIncrement(QtCore.QSize(20, 20))
-        self.lineEdit_dateDay_2.setBaseSize(QtCore.QSize(20, 20))
+        self.lineEdit_dateDay_2.setMinimumSize(QtCore.QSize(25, 20))
+        self.lineEdit_dateDay_2.setMaximumSize(QtCore.QSize(25, 20))
+        self.lineEdit_dateDay_2.setSizeIncrement(QtCore.QSize(25, 20))
+        self.lineEdit_dateDay_2.setBaseSize(QtCore.QSize(25, 20))
         self.lineEdit_dateDay_2.setStatusTip("")
         self.lineEdit_dateDay_2.setAlignment(QtCore.Qt.AlignCenter)
         self.lineEdit_dateDay_2.setObjectName("lineEdit_dateDay_2")
@@ -336,10 +336,10 @@ class Ui_MainWindow(object):
         sizePolicy.setVerticalStretch(1)
         sizePolicy.setHeightForWidth(self.lineEdit_dateMonth_2.sizePolicy().hasHeightForWidth())
         self.lineEdit_dateMonth_2.setSizePolicy(sizePolicy)
-        self.lineEdit_dateMonth_2.setMinimumSize(QtCore.QSize(20, 20))
-        self.lineEdit_dateMonth_2.setMaximumSize(QtCore.QSize(20, 20))
-        self.lineEdit_dateMonth_2.setSizeIncrement(QtCore.QSize(20, 20))
-        self.lineEdit_dateMonth_2.setBaseSize(QtCore.QSize(20, 20))
+        self.lineEdit_dateMonth_2.setMinimumSize(QtCore.QSize(25, 20))
+        self.lineEdit_dateMonth_2.setMaximumSize(QtCore.QSize(25, 20))
+        self.lineEdit_dateMonth_2.setSizeIncrement(QtCore.QSize(25, 20))
+        self.lineEdit_dateMonth_2.setBaseSize(QtCore.QSize(25, 20))
         self.lineEdit_dateMonth_2.setStatusTip("")
         self.lineEdit_dateMonth_2.setAlignment(QtCore.Qt.AlignCenter)
         self.lineEdit_dateMonth_2.setObjectName("lineEdit_dateMonth_2")
@@ -371,8 +371,8 @@ class Ui_MainWindow(object):
         sizePolicy.setVerticalStretch(1)
         sizePolicy.setHeightForWidth(self.lineEdit_dateYear_2.sizePolicy().hasHeightForWidth())
         self.lineEdit_dateYear_2.setSizePolicy(sizePolicy)
-        self.lineEdit_dateYear_2.setMinimumSize(QtCore.QSize(35, 20))
-        self.lineEdit_dateYear_2.setMaximumSize(QtCore.QSize(35, 20))
+        self.lineEdit_dateYear_2.setMinimumSize(QtCore.QSize(40, 20))
+        self.lineEdit_dateYear_2.setMaximumSize(QtCore.QSize(40, 20))
         self.lineEdit_dateYear_2.setSizeIncrement(QtCore.QSize(35, 20))
         self.lineEdit_dateYear_2.setBaseSize(QtCore.QSize(35, 20))
         self.lineEdit_dateYear_2.setStatusTip("")
@@ -520,16 +520,20 @@ class Ui_MainWindow(object):
         self.gridLayout_7.setObjectName("gridLayout_7")
         self.groupBox_2 = QtWidgets.QGroupBox(self.groupBox)
         self.groupBox_2.setMaximumSize(QtCore.QSize(16777215, 120))
+        font = QtGui.QFont()
+        font.setFamily("Tahoma")
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.groupBox_2.setFont(font)
         self.groupBox_2.setStatusTip("")
         self.groupBox_2.setStyleSheet("QLineEdit{\n"
 "background-color: rgba(0, 0, 0, 0);\n"
-"font: 75 12pt \"A Arghavan\";\n"
+"font: 75 12pt  \"Titr\";\n"
 "border-style: solid;\n"
 "border-bottom-width: 2px;\n"
 "}\n"
-"QCheckBox{\n"
-"font: 75 8pt \"A Arsoo\";\n"
-"}\n"
+"\n"
 "QComboBox{\n"
 "background-color: #eee1c5   ;\n"
 "font: 75 10pt \"A Arsoo\";\n"
@@ -593,10 +597,10 @@ class Ui_MainWindow(object):
         sizePolicy.setVerticalStretch(1)
         sizePolicy.setHeightForWidth(self.lineEdit_dateDay.sizePolicy().hasHeightForWidth())
         self.lineEdit_dateDay.setSizePolicy(sizePolicy)
-        self.lineEdit_dateDay.setMinimumSize(QtCore.QSize(20, 20))
-        self.lineEdit_dateDay.setMaximumSize(QtCore.QSize(20, 20))
-        self.lineEdit_dateDay.setSizeIncrement(QtCore.QSize(20, 20))
-        self.lineEdit_dateDay.setBaseSize(QtCore.QSize(20, 20))
+        self.lineEdit_dateDay.setMinimumSize(QtCore.QSize(25, 20))
+        self.lineEdit_dateDay.setMaximumSize(QtCore.QSize(25, 20))
+        self.lineEdit_dateDay.setSizeIncrement(QtCore.QSize(25, 20))
+        self.lineEdit_dateDay.setBaseSize(QtCore.QSize(25, 20))
         self.lineEdit_dateDay.setStatusTip("")
         self.lineEdit_dateDay.setAlignment(QtCore.Qt.AlignCenter)
         self.lineEdit_dateDay.setObjectName("lineEdit_dateDay")
@@ -626,10 +630,10 @@ class Ui_MainWindow(object):
         sizePolicy.setVerticalStretch(1)
         sizePolicy.setHeightForWidth(self.lineEdit_dateMonth.sizePolicy().hasHeightForWidth())
         self.lineEdit_dateMonth.setSizePolicy(sizePolicy)
-        self.lineEdit_dateMonth.setMinimumSize(QtCore.QSize(20, 20))
-        self.lineEdit_dateMonth.setMaximumSize(QtCore.QSize(20, 20))
-        self.lineEdit_dateMonth.setSizeIncrement(QtCore.QSize(20, 20))
-        self.lineEdit_dateMonth.setBaseSize(QtCore.QSize(20, 20))
+        self.lineEdit_dateMonth.setMinimumSize(QtCore.QSize(25, 20))
+        self.lineEdit_dateMonth.setMaximumSize(QtCore.QSize(25, 20))
+        self.lineEdit_dateMonth.setSizeIncrement(QtCore.QSize(25, 20))
+        self.lineEdit_dateMonth.setBaseSize(QtCore.QSize(25, 20))
         self.lineEdit_dateMonth.setStatusTip("")
         self.lineEdit_dateMonth.setAlignment(QtCore.Qt.AlignCenter)
         self.lineEdit_dateMonth.setObjectName("lineEdit_dateMonth")
@@ -661,10 +665,10 @@ class Ui_MainWindow(object):
         sizePolicy.setVerticalStretch(1)
         sizePolicy.setHeightForWidth(self.lineEdit_dateYear.sizePolicy().hasHeightForWidth())
         self.lineEdit_dateYear.setSizePolicy(sizePolicy)
-        self.lineEdit_dateYear.setMinimumSize(QtCore.QSize(35, 20))
-        self.lineEdit_dateYear.setMaximumSize(QtCore.QSize(35, 20))
-        self.lineEdit_dateYear.setSizeIncrement(QtCore.QSize(35, 20))
-        self.lineEdit_dateYear.setBaseSize(QtCore.QSize(35, 20))
+        self.lineEdit_dateYear.setMinimumSize(QtCore.QSize(40, 20))
+        self.lineEdit_dateYear.setMaximumSize(QtCore.QSize(40, 20))
+        self.lineEdit_dateYear.setSizeIncrement(QtCore.QSize(40, 20))
+        self.lineEdit_dateYear.setBaseSize(QtCore.QSize(40, 20))
         self.lineEdit_dateYear.setStatusTip("")
         self.lineEdit_dateYear.setMaxLength(32765)
         self.lineEdit_dateYear.setAlignment(QtCore.Qt.AlignCenter)
@@ -675,6 +679,13 @@ class Ui_MainWindow(object):
         self.horizontalLayout_4.addItem(spacerItem20)
         self.checkBox_nextDays = QtWidgets.QCheckBox(self.groupBox_2)
         self.checkBox_nextDays.setEnabled(False)
+        font = QtGui.QFont()
+        font.setFamily("A Arsoo")
+        font.setPointSize(12)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setWeight(9)
+        self.checkBox_nextDays.setFont(font)
         self.checkBox_nextDays.setObjectName("checkBox_nextDays")
         self.horizontalLayout_4.addWidget(self.checkBox_nextDays)
         spacerItem21 = QtWidgets.QSpacerItem(150, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
