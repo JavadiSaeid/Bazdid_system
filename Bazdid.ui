@@ -14,7 +14,7 @@
    <string>تعیین وقت بازدید ثبت ماسال</string>
   </property>
   <property name="windowIcon">
-   <iconset>
+   <iconset resource="icon.qrc">
     <normaloff>:/QIcon/Backup/iconn.png</normaloff>:/QIcon/Backup/iconn.png</iconset>
   </property>
   <property name="layoutDirection">
@@ -1349,6 +1349,12 @@ border-radius: 3px;
                  <layout class="QHBoxLayout" name="horizontalLayout_7">
                   <item>
                    <widget class="QRadioButton" name="radioButton_doWork">
+                    <property name="cursor">
+                     <cursorShape>PointingHandCursor</cursorShape>
+                    </property>
+                    <property name="toolTip">
+                     <string>بازیابی سوابق ثبت شده براساس نوع انجام کار</string>
+                    </property>
                     <property name="text">
                      <string>بازیابی بر اساس نوع انجام کار</string>
                     </property>
@@ -1386,6 +1392,12 @@ border-radius: 3px;
                       <width>200</width>
                       <height>0</height>
                      </size>
+                    </property>
+                    <property name="cursor">
+                     <cursorShape>PointingHandCursor</cursorShape>
+                    </property>
+                    <property name="toolTip">
+                     <string>نوع انجام کار برای بازیابی را انتخاب کنید</string>
                     </property>
                     <property name="styleSheet">
                      <string notr="true">QComboBox{
@@ -1428,6 +1440,9 @@ border-radius: 3px;
                   </property>
                   <item>
                    <widget class="QRadioButton" name="radioButton_viaDate">
+                    <property name="cursor">
+                     <cursorShape>PointingHandCursor</cursorShape>
+                    </property>
                     <property name="toolTip">
                      <string>بازیابی سوابق ثبت شده به تاریخ</string>
                     </property>
@@ -1743,6 +1758,9 @@ border-radius: 3px;
                   </property>
                   <item>
                    <widget class="QRadioButton" name="radioButton_viaName">
+                    <property name="cursor">
+                     <cursorShape>PointingHandCursor</cursorShape>
+                    </property>
                     <property name="toolTip">
                      <string>بازیابی سوابق ثبت شده به نام متقاضی</string>
                     </property>
@@ -2145,6 +2163,9 @@ border-radius: 10px;
                  <height>0</height>
                 </size>
                </property>
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
                <property name="styleSheet">
                 <string notr="true">QPushButton:hover:!pressed
 {
@@ -2257,7 +2278,7 @@ border-radius: 10px;
      <x>0</x>
      <y>0</y>
      <width>630</width>
-     <height>20</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu">
@@ -2309,6 +2330,7 @@ border-radius: 10px;
   <tabstop>lineEdit_sangAsli</tabstop>
   <tabstop>lineEdit_sangFari</tabstop>
   <tabstop>lineEdit_moteqazi</tabstop>
+  <tabstop>comboBox_noeAnjamKar</tabstop>
   <tabstop>comboBox_naghshebardar</tabstop>
   <tabstop>comboBox_namaiande</tabstop>
   <tabstop>lineEdit_dateDay_2</tabstop>
@@ -2320,13 +2342,19 @@ border-radius: 10px;
   <tabstop>pushButton_new</tabstop>
   <tabstop>lineEdit_sangAsli_2</tabstop>
   <tabstop>lineEdit_sangFari_2</tabstop>
+  <tabstop>radioButton_doWork</tabstop>
+  <tabstop>comboBox_searchDoWork</tabstop>
+  <tabstop>radioButton_viaDate</tabstop>
   <tabstop>lineEdit_dateDay</tabstop>
   <tabstop>lineEdit_dateMonth</tabstop>
   <tabstop>lineEdit_dateYear</tabstop>
+  <tabstop>checkBox_nextDays</tabstop>
   <tabstop>radioButton_viaName</tabstop>
   <tabstop>lineEdit_moteqazi_2</tabstop>
   <tabstop>pushButton_search</tabstop>
   <tabstop>tableView_result</tabstop>
+  <tabstop>pushButton_getExcel</tabstop>
+  <tabstop>pushButton_print</tabstop>
  </tabstops>
  <resources>
   <include location="icon.qrc"/>

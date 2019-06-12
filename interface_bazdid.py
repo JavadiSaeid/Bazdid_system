@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'Bazdid.ui'
 #
-# Created by: PyQt5 UI code generator 5.12.1
+# Created by: PyQt5 UI code generator 5.12.2
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -546,6 +546,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_7 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_7.setObjectName("horizontalLayout_7")
         self.radioButton_doWork = QtWidgets.QRadioButton(self.groupBox_2)
+        self.radioButton_doWork.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.radioButton_doWork.setChecked(True)
         self.radioButton_doWork.setObjectName("radioButton_doWork")
         self.horizontalLayout_7.addWidget(self.radioButton_doWork)
@@ -558,6 +559,7 @@ class Ui_MainWindow(object):
         sizePolicy.setHeightForWidth(self.comboBox_searchDoWork.sizePolicy().hasHeightForWidth())
         self.comboBox_searchDoWork.setSizePolicy(sizePolicy)
         self.comboBox_searchDoWork.setMinimumSize(QtCore.QSize(200, 0))
+        self.comboBox_searchDoWork.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.comboBox_searchDoWork.setStyleSheet("QComboBox{\n"
 "background-color: #eee1c5   ;\n"
 "font: 75 10pt \"A Arsoo\" ;\n"
@@ -575,6 +577,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_4.setContentsMargins(-1, 4, -1, -1)
         self.horizontalLayout_4.setObjectName("horizontalLayout_4")
         self.radioButton_viaDate = QtWidgets.QRadioButton(self.groupBox_2)
+        self.radioButton_viaDate.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.radioButton_viaDate.setStatusTip("")
         self.radioButton_viaDate.setObjectName("radioButton_viaDate")
         self.horizontalLayout_4.addWidget(self.radioButton_viaDate)
@@ -681,6 +684,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_5.setContentsMargins(-1, 4, -1, -1)
         self.horizontalLayout_5.setObjectName("horizontalLayout_5")
         self.radioButton_viaName = QtWidgets.QRadioButton(self.groupBox_2)
+        self.radioButton_viaName.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.radioButton_viaName.setStatusTip("")
         self.radioButton_viaName.setObjectName("radioButton_viaName")
         self.horizontalLayout_5.addWidget(self.radioButton_viaName)
@@ -817,6 +821,7 @@ class Ui_MainWindow(object):
         sizePolicy.setHeightForWidth(self.pushButton_getExcel.sizePolicy().hasHeightForWidth())
         self.pushButton_getExcel.setSizePolicy(sizePolicy)
         self.pushButton_getExcel.setMinimumSize(QtCore.QSize(100, 0))
+        self.pushButton_getExcel.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.pushButton_getExcel.setStyleSheet("QPushButton:hover:!pressed\n"
 "{\n"
 "  border: 2px dashed   #039cff  ;\n"
@@ -866,7 +871,7 @@ class Ui_MainWindow(object):
         self.gridLayout.addWidget(self.tabWidget, 0, 1, 1, 1)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 630, 20))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 630, 21))
         self.menubar.setObjectName("menubar")
         self.menu = QtWidgets.QMenu(self.menubar)
         self.menu.setObjectName("menu")
@@ -900,7 +905,8 @@ class Ui_MainWindow(object):
         MainWindow.setTabOrder(self.tabWidget, self.lineEdit_sangAsli)
         MainWindow.setTabOrder(self.lineEdit_sangAsli, self.lineEdit_sangFari)
         MainWindow.setTabOrder(self.lineEdit_sangFari, self.lineEdit_moteqazi)
-        MainWindow.setTabOrder(self.lineEdit_moteqazi, self.comboBox_naghshebardar)
+        MainWindow.setTabOrder(self.lineEdit_moteqazi, self.comboBox_noeAnjamKar)
+        MainWindow.setTabOrder(self.comboBox_noeAnjamKar, self.comboBox_naghshebardar)
         MainWindow.setTabOrder(self.comboBox_naghshebardar, self.comboBox_namaiande)
         MainWindow.setTabOrder(self.comboBox_namaiande, self.lineEdit_dateDay_2)
         MainWindow.setTabOrder(self.lineEdit_dateDay_2, self.lineEdit_dateMonth_2)
@@ -911,13 +917,19 @@ class Ui_MainWindow(object):
         MainWindow.setTabOrder(self.pushButton_sabt, self.pushButton_new)
         MainWindow.setTabOrder(self.pushButton_new, self.lineEdit_sangAsli_2)
         MainWindow.setTabOrder(self.lineEdit_sangAsli_2, self.lineEdit_sangFari_2)
-        MainWindow.setTabOrder(self.lineEdit_sangFari_2, self.lineEdit_dateDay)
+        MainWindow.setTabOrder(self.lineEdit_sangFari_2, self.radioButton_doWork)
+        MainWindow.setTabOrder(self.radioButton_doWork, self.comboBox_searchDoWork)
+        MainWindow.setTabOrder(self.comboBox_searchDoWork, self.radioButton_viaDate)
+        MainWindow.setTabOrder(self.radioButton_viaDate, self.lineEdit_dateDay)
         MainWindow.setTabOrder(self.lineEdit_dateDay, self.lineEdit_dateMonth)
         MainWindow.setTabOrder(self.lineEdit_dateMonth, self.lineEdit_dateYear)
-        MainWindow.setTabOrder(self.lineEdit_dateYear, self.radioButton_viaName)
+        MainWindow.setTabOrder(self.lineEdit_dateYear, self.checkBox_nextDays)
+        MainWindow.setTabOrder(self.checkBox_nextDays, self.radioButton_viaName)
         MainWindow.setTabOrder(self.radioButton_viaName, self.lineEdit_moteqazi_2)
         MainWindow.setTabOrder(self.lineEdit_moteqazi_2, self.pushButton_search)
         MainWindow.setTabOrder(self.pushButton_search, self.tableView_result)
+        MainWindow.setTabOrder(self.tableView_result, self.pushButton_getExcel)
+        MainWindow.setTabOrder(self.pushButton_getExcel, self.pushButton_print)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
@@ -969,7 +981,9 @@ class Ui_MainWindow(object):
         self.groupBox.setTitle(_translate("MainWindow", "فرم بازیابی اطلاعات ثبت شده"))
         self.groupBox_2.setToolTip(_translate("MainWindow", "بازیابی پرونده های تعیین وقت شده به تاریخ"))
         self.groupBox_2.setTitle(_translate("MainWindow", "بازیابی پیشرفته"))
+        self.radioButton_doWork.setToolTip(_translate("MainWindow", "بازیابی سوابق ثبت شده براساس نوع انجام کار"))
         self.radioButton_doWork.setText(_translate("MainWindow", "بازیابی بر اساس نوع انجام کار"))
+        self.comboBox_searchDoWork.setToolTip(_translate("MainWindow", "نوع انجام کار برای بازیابی را انتخاب کنید"))
         self.comboBox_searchDoWork.setItemText(0, _translate("MainWindow", "همه موارد"))
         self.radioButton_viaDate.setToolTip(_translate("MainWindow", "بازیابی سوابق ثبت شده به تاریخ"))
         self.radioButton_viaDate.setText(_translate("MainWindow", "بازیابی به تاریخ"))
