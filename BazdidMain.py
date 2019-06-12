@@ -357,33 +357,7 @@ class Bazdid():
                 year = self.ui.lineEdit_dateYear.text()
                 if (year and month and day) != '':
                     searchDate = str(int(year)) + "/" + str(int(month)) + "/" + str(int(day))
-                #     searchDate2 = str(int(year.replace('13', ''))) + "/" + str(int(month)) + "/" + str(int(day))
-                #     searchDate2_1 = str(int(year.replace('14', ''))) + "/" + str(int(month)) + "/" + str(int(day))
-                #     searchDate3 = str(int('13' + year)) + "/" + str(int(month)) + "/" + str(int(day))
-                #     searchDate4 = str(int('14' + year)) + "/" + str(int(month)) + "/" + str(int(day))
-                #
-                #     searchDate_22 = str(int('13' +year)) + "/" + str(int('0' + month)) + "/" + str(int(day))
-                #     searchDate_23 = str(int(year)) + "/" + str(int('0' + month)) + "/" + str(int(day))
-                #     searchDate_24 = str(int('14' +year)) + "/" + str(int('0' + month)) + "/" + str(int(day))
-                #
-                #     searchDate_25= str(int('13' +year)) + "/" + str(int('0' + month)) + "/" + str(int('0'+day))
-                #     searchDate_26= str(int(year)) + "/" + str(int('0' + month)) + "/" + str(int('0'+day))
-                #     searchDate_27= str(int('14' +year)) + "/" + str(int('0' + month)) + "/" + str(int('0'+day))
-                #
-                #     searchDate_28= str(int('13' +year)) + "/" + str(int(month)) + "/" + str(int('0'+day))
-                #     searchDate_29= str(int(year)) + "/" + str(int(month)) + "/" + str(int('0'+day))
-                #     searchDate_30= str(int('14' +year)) + "/" + str(int(month)) + "/" + str(int('0'+day))
-                #
-                #     searchDate31 = str(int(year.replace('13', ''))) + "/" + str(int('0'+month)) + "/" + str(int(day))
-                #     searchDate32 = str(int(year.replace('13', ''))) + "/" + str(int('0'+month)) + "/" + str(int('0'+day))
-                #     searchDate33 = str(int(year.replace('13', ''))) + "/" + str(int(month)) + "/" + str(int('0'+day))
-                #
-                #     searchDate34 = str(int(year.replace('14', ''))) + "/" + str(int('0'+month)) + "/" + str(int(day))
-                #     searchDate35 = str(int(year.replace('14', ''))) + "/" + str(int('0'+month)) + "/" + str(int('0'+day))
-                #     searchDate36 = str(int(year.replace('14', ''))) + "/" + str(int(month)) + "/" + str(int('0'+day))
-                # else:
-                #     searchDate = year + "/" + month + "/" + day
-                #     searchDate2 = year.replace('13', '') + "/" + month + "/" + day
+
                     searchDate_1 = str(int(year)) + "/" + str(int(month)) + "/" + str(int(day))
                     searchDate_2 = str(int(year)) + "/" + str(int(month)) + "/" + str(int(day))
                     try:
@@ -407,9 +381,6 @@ class Bazdid():
                 if not self.ui.checkBox_nextDays.isChecked():
                     self.dbToTableView(
                         commandSQL="SELECT pl, ml, dw, tb, sb, nb, nm, sd, tt FROM BAZDID_DATE WHERE  (tbo = '{}' OR tbo = '{}') AND dw LIKE '{}' ".format(tbo_1, tbo_2, DW_filter))
-                    # self.dbToTableView(
-                        # commandSQL="SELECT pl, ml, dw, tb, sb, nb, nm, sd, tt FROM BAZDID_DATE WHERE  (tb='{}' OR tb='{}' OR tb='{}' OR tb='{}' OR tb='{}' OR tb='{}' OR tb='{}' OR tb='{}' OR tb='{}' OR tb='{}' OR tb='{}' OR tb='{}' OR tb='{}' OR tb='{}' OR tb='{}' OR tb='{}' OR tb='{}' OR tb='{}' OR tb='{}' OR tb='{}') "
-                        #            "".format(searchDate, searchDate2, searchDate2_1, searchDate3, searchDate4,searchDate_22,searchDate_23,searchDate_24,searchDate_25,searchDate_26,searchDate_27,searchDate_28,searchDate_29,searchDate_30,searchDate31,searchDate32,searchDate33,searchDate34,searchDate35,searchDate36))
                     if self.rowCount <= 0:
                         self.ui.statusbar.showMessage(
                             "برای تاریخ {} سابقه ای موجود نیست".format(searchDate_1))
