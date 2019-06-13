@@ -413,9 +413,9 @@ class Bazdid():
                         commandSQL="SELECT pl, ml, dw, tb, sb, nb, nm, sd, tt FROM BAZDID_DATE WHERE  (tbo >= '{}' OR tbo >= '{}' ) AND dw LIKE '{}' ".format(tbo_1, tbo_2, DW_filter))
                     if self.rowCount <= 0:
                         self.ui.statusbar.showMessage(
-                            "برای تاریخ {} سابقه ای موجود نیست".format(searchDate_1))
+                            "برای تاریخ {} به بعد سابقه ای موجود نیست".format(searchDate_1))
                     else:
-                        self.TableTitr = f" تمام سوابق ثبت شده موجود برای تاریخ  {searchDate_1} "
+                        self.TableTitr = ""
                         self.enPrint()
                         self.SQL_C = "SELECT pl, ml, dw, tb, sb, nb, nm, sd, tt FROM BAZDID_DATE WHERE  (tbo >= '{}' OR tbo >= '{}') AND dw LIKE '{}' ".format(tbo_1, tbo_2, DW_filter)
             except:
