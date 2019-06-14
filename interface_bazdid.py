@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'Bazdid.ui'
 #
-# Created by: PyQt5 UI code generator 5.12.2
+# Created by: PyQt5 UI code generator 5.12.1
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -12,7 +12,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(630, 696)
+        MainWindow.resize(594, 625)
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap(":/QIcon/Backup/iconn.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         MainWindow.setWindowIcon(icon)
@@ -882,7 +882,7 @@ class Ui_MainWindow(object):
         self.gridLayout.addWidget(self.tabWidget, 0, 1, 1, 1)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 630, 21))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 594, 20))
         self.menubar.setObjectName("menubar")
         self.menu = QtWidgets.QMenu(self.menubar)
         self.menu.setObjectName("menu")
