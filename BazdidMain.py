@@ -23,6 +23,8 @@ class Bazdid():
         self.ui.setupUi(self.MainWindow)
         self.dateTime()
         # self.dbPath = r'\\10.120.112.70\baygan-data\ZamanBandi_Bazdid.db'
+        if not os.path.isdir('Data'):
+            os.mkdir('Data')
         self.dbPath = r'Data\ZamanBandi_Bazdid.db'
         self.onlyInt = QIntValidator()
         regex = QRegExp("[0-9]+")
