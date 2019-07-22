@@ -4,3 +4,4 @@ Backup/*
 Backup
 .idea/*
 WS/
+*.db
